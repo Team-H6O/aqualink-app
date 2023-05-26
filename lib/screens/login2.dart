@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:provider/provider.dart';
-
-// import 'login_model.dart';
-// export 'login_model.dart';
 
 void main() {
-  runApp(const Login());
+  runApp(const Login2());
 }
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Login2 extends StatelessWidget {
+  const Login2({super.key});
 
   // This widget is the root of your application.
   @override
@@ -31,53 +26,29 @@ class Login extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(title: 'Login'),
+      home: const Login2Page(title: 'Login2'),
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+class Login2Page extends StatefulWidget {
+  const Login2Page({super.key, required this.title});
 
   final String title;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Login2Page> createState() => _Login2PageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class _Login2PageState extends State<Login2Page> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Scaffold(
-        backgroundColor: AppTheme.nearWhiteColor,
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-            child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
@@ -117,10 +88,12 @@ class _LoginPageState extends State<LoginPage> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Image.asset('assets/logo/logo_drop.png',
-                                        // width: 50,
-                                        // height: 50,
-                                        fit: BoxFit.contain,),
+                                      Image.network(
+                                        'https://picsum.photos/seed/382/600',
+                                        width: 80,
+                                        height: 80,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -133,24 +106,16 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  Text(
                                     'Login to',
-                                    style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                    ),
+                                    style: Theme.of(context).textTheme.headline3,
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         4, 0, 0, 0),
                                     child: Text(
                                       'Aqualink',
-                                      style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppTheme.darkPrimaryColor,
-                                    ),
+                                      style: Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                 ],
@@ -169,125 +134,112 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              height: 45,
-                              child: Center(
-                                child: TextFormField(
-                                  // controller: _model.textController1,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Email',
-                                    hintStyle: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppTheme.grayColor,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                            TextFormField(
+                              // controller: _model.textController1,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Email',
+                                hintStyle: Theme.of(context).textTheme.headline6,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
                                   ),
-                                  // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                  // validator: _model.textController1Validator
-                                  //     .asValidator(context),
+                                  borderRadius: BorderRadius.circular(14),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 16, 0),
                               ),
+                              style: Theme.of(context).textTheme.headline3,
+                              // validator: _model.textController1Validator
+                              //     .asValidator(context),
                             ),
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                              child: Container(
-    height: 45,
-    child: Center(
-      child: TextFormField(
-        // controller: _model.textController2,
-        autofocus: true,
-        // obscureText: !_model.passwordVisibility,
-        decoration: InputDecoration(
-          hintText: 'Password',
-          hintStyle: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w400,
-            color: AppTheme.grayColor,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Color(0x00000000),
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(14),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Color(0x00000000),
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(14),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Color(0x00000000),
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(14),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Color(0x00000000),
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(14),
-          ),
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-          // suffixIcon: InkWell(
-          //   onTap: () => setState(
-          //     () => _model.passwordVisibility = !_model.passwordVisibility,
-          //   ),
-          //   focusNode: FocusNode(skipTraversal: true),
-          //   child: Icon(
-          //     _model.passwordVisibility
-          //         ? Icons.visibility_outlined
-          //         : Icons.visibility_off_outlined,
-          //     color: Color(0xFF757575),
-          //     size: 22,
-          //   ),
-          // ),
-        ),
-        // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-        // validator: _model.textController2Validator.asValidator(context),
-      ),
-    ),
-  ),
+                              child: TextFormField(
+                                // controller: _model.textController2,
+                                autofocus: true,
+                                // obscureText: !_model.passwordVisibility,
+                                decoration: InputDecoration(
+                                  hintText: 'Password',
+                                  hintStyle: Theme.of(context).textTheme.headline3,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          16, 0, 16, 0),
+                                  // suffixIcon: InkWell(
+                                    // onTap: () => setState(
+                                    //   () => _model.passwordVisibility =
+                                    //       !_model.passwordVisibility,
+                                    // ),
+                                    // focusNode: FocusNode(skipTraversal: true),
+                                    // child: Icon(
+                                    //   _model.passwordVisibility
+                                    //       ? Icons.visibility_outlined
+                                    //       : Icons.visibility_off_outlined,
+                                    //   color: Color(0xFF757575),
+                                    //   size: 22,
+                                    // ),
+                                  // ),
+                                ),
+                                style: Theme.of(context).textTheme.headline3,
+                                // validator: _model.textController2Validator
+                                //     .asValidator(context),
+                              ),
                             ),
                             Padding(
                               padding:
@@ -456,9 +408,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          ),
-        ),
-      ),
     );
   }
 }

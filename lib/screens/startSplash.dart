@@ -2,32 +2,62 @@ import 'dart:async';
 import 'package:aqualink/screens/landing.dart';
 import 'package:flutter/material.dart';
 
-class StartSplash extends StatefulWidget {
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _StartSplashState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: StartSplashScreen(), // Utilise StartSplashScreen comme page d'accueil
+    );
   }
 }
 
-class _StartSplashState extends State<StartSplash> {
+class StartSplashScreen extends StatefulWidget {
+  @override
+  _StartSplashScreenState createState() => _StartSplashScreenState();
+}
+
+class _StartSplashScreenState extends State<StartSplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Temps de chargement souhaité
-    Timer(const Duration(seconds: 2), () {
-      // Naviguer vers la prochaine page (par exemple, la page d'accueil)
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Landing()),
-      );
-    });
+    navigateToLanding(); // Appeler la fonction pour naviguer vers Landing() après une attente
+  }
+
+  void navigateToLanding() async {
+    await Future.delayed(Duration(seconds: 2)); // Simuler une attente de 2 secondes
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Landing()), // Naviguer vers la page Landing()
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Mon application'),
+      ),
       body: Center(
-        child: CircularProgressIndicator(), // ou tout autre contenu de chargement
+        child: Text('Écran de chargement'),
+      ),
+    );
+  }
+}
+
+class Landing extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Landing'),
+      ),
+      body: Center(
+        child: Text('Page Landing'),
       ),
     );
   }

@@ -20,11 +20,11 @@ class AppTheme {
   static const String fontRegular = 'Inter-Regular';
   static const String fontMedium = 'Inter-Medium';
   static const String fontSemiBold = 'Inter-SemiBold';
-  static const String fontBold = 'Inter-Bold';
+  static const String fontBold = 'fonts/Inter-Bold';
   static const String fontExtraBold = 'Inter-ExtraBold';
   static const String fontBlack = 'Inter-Black';
 
-  // Weight
+  // Size
   static const double headline1Size = 32.0;
   static const double headline2Size = 28.0;
   static const double headline3Size = 24.0;
