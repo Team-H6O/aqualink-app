@@ -1,27 +1,36 @@
-import 'package:aqualink/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:aqualink/utils/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Login());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Login extends StatelessWidget {
+  const Login({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: AppTheme.lightTheme(),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      home: const LoginPage(title: 'Login'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -35,11 +44,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
+class _LoginPageState extends State<LoginPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -51,41 +59,6 @@ class _MyHomePageState extends State<MyHomePage>
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
-
-  // Animation on load
-  late AnimationController _animationController;
-  late Animation<double> _opacityAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
-
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeIn,
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // Démarre l'animation lors de l'apparition de la page
-    _animationController.forward();
   }
 
   @override
@@ -122,35 +95,12 @@ class _MyHomePageState extends State<MyHomePage>
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            AnimatedOpacity(
-              opacity: _opacityAnimation.value,
-              duration: const Duration(milliseconds: 500),
-              child: const Text(
-                'Welcome to the Animated Page',
-                style: TextStyle(fontSize: 24),
-              ),
+            const Text(
+              'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            ElevatedButton(
-              child: const Text('Open route'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Login()),
-                );
-              },
-            ),
-            Text(
-              'Hello World',
-              style: TextStyle(
-                color: AppTheme.primaryColor,
-                fontFamily: AppTheme.fontBlack,
-                fontSize: AppTheme.bodyText1Size,
-                letterSpacing: AppTheme.defaultSpacing,
-              ),
             ),
           ],
         ),
