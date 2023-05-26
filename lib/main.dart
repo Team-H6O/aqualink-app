@@ -1,9 +1,11 @@
+import 'package:aqualink/screens/startSplash.dart';
 import 'package:aqualink/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
 
+
 void main() {
-  runApp(const MyApp());
+  runApp(StartSplash());
 }
 
 class MyApp extends StatelessWidget {
@@ -130,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage>
                 style: TextStyle(fontSize: 24),
               ),
             ),
+            Image.asset('assets/logo/logo.png'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -143,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage>
                 );
               },
             ),
-            Text(
+            const Text(
               'Hello World',
               style: TextStyle(
                 color: AppTheme.primaryColor,
