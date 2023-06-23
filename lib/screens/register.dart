@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/screens/register.dart';
+import 'package:aqualink/screens/login.dart';
 import 'package:aqualink/screens/home.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:provider/provider.dart';
-
-// import 'login_model.dart';
-// export 'login_model.dart';
 
 void main() {
-  runApp(const Login());
+  runApp(const Register());
 }
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   // This widget is the root of your application.
   @override
@@ -33,13 +28,13 @@ class Login extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(title: 'Login'),
+      home: const RegisterPage(title: 'Register'),
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -53,10 +48,10 @@ class LoginPage extends StatefulWidget {
   final String title;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -135,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    'Login to',
+                                    'Register to',
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.w600,
@@ -175,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    hintText: 'Email',
+                                    hintText: 'NOM Prénom',
                                     hintStyle: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
@@ -218,6 +213,64 @@ class _LoginPageState extends State<LoginPage> {
                                   // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
                                   // validator: _model.textController1Validator
                                   //     .asValidator(context),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              child: Container(
+                                height: 45,
+                                child: Center(
+                                  child: TextFormField(
+                                    // controller: _model.textController1,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: 'Email',
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppTheme.grayColor,
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              16, 0, 16, 0),
+                                    ),
+                                    // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
+                                    // validator: _model.textController1Validator
+                                    //     .asValidator(context),
+                                  ),
                                 ),
                               ),
                             ),
@@ -293,50 +346,103 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Padding(
                               padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              child: Container(
+                                height: 45,
+                                child: Center(
+                                  child: TextFormField(
+                                    // controller: _model.textController2,
+                                    autofocus: true,
+                                    // obscureText: !_model.passwordVisibility,
+                                    decoration: InputDecoration(
+                                      hintText: 'Confirm password',
+                                      hintStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppTheme.grayColor,
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              16, 0, 16, 0),
+                                      // suffixIcon: InkWell(
+                                      //   onTap: () => setState(
+                                      //     () => _model.passwordVisibility = !_model.passwordVisibility,
+                                      //   ),
+                                      //   focusNode: FocusNode(skipTraversal: true),
+                                      //   child: Icon(
+                                      //     _model.passwordVisibility
+                                      //         ? Icons.visibility_outlined
+                                      //         : Icons.visibility_off_outlined,
+                                      //     color: Color(0xFF757575),
+                                      //     size: 22,
+                                      //   ),
+                                      // ),
+                                    ),
+                                    // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
+                                    // validator: _model.textController2Validator.asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Theme(
-                                        data: ThemeData(
-                                          checkboxTheme: CheckboxThemeData(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(4),
-                                            ),
-                                          ),
-                                          unselectedWidgetColor:
-                                              Color(0xFFF5F5F5),
-                                        ),
-                                        child: Checkbox(
-                                          value:
-                                              true, // value: _model.checkboxValue ??= true,
-                                          onChanged: (newValue) async {
-                                            // setState(() => _model
-                                            //     .checkboxValue = newValue!);
-                                          },
-                                          activeColor:
-                                              AppTheme.darkPrimaryColor,
+                                  Theme(
+                                    data: ThemeData(
+                                      checkboxTheme: CheckboxThemeData(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4),
                                         ),
                                       ),
-                                      Text(
-                                        'Remember me',
-                                        style: TextStyle(
-                                          fontSize: AppTheme.bodyText2Size,
-                                          color: AppTheme.darkPrimaryColor,
-                                        ),
-                                      ),
-                                    ],
+                                      unselectedWidgetColor: Color(0xFFF5F5F5),
+                                    ),
+                                    child: Checkbox(
+                                      value:
+                                          true, // value: _model.checkboxValue ??= true,
+                                      onChanged: (newValue) async {
+                                        // setState(() => _model
+                                        //     .checkboxValue = newValue!);
+                                      },
+                                      activeColor: AppTheme.darkPrimaryColor,
+                                    ),
                                   ),
                                   Text(
-                                    'Forget your password ?',
+                                    'Agree to our Terms of Service and Privacy Policy',
                                     style: TextStyle(
                                       fontSize: AppTheme.bodyText2Size,
                                       color: AppTheme.darkPrimaryColor,
@@ -356,7 +462,7 @@ class _LoginPageState extends State<LoginPage> {
                                         builder: (context) => const Home()),
                                   );
                                 },
-                                child: Text('Sign In'),
+                                child: Text('Register'),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(double.infinity, 45),
                                   padding: EdgeInsets.zero,
@@ -459,7 +565,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const Text(
-                        'Don\'t have an account ?',
+                        'Already have an account ?',
                         style: TextStyle(
                           fontSize: AppTheme.bodyText2Size,
                           color: AppTheme.grayColor,
@@ -472,11 +578,11 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Register()),
+                                  builder: (context) => const Login()),
                             );
                           },
                           child: const Text(
-                            'Register',
+                            'Sign In',
                             style: TextStyle(
                               fontSize: AppTheme.bodyText2Size,
                               fontWeight: FontWeight.w600,
