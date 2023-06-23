@@ -4,6 +4,7 @@ import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/register.dart';
 import 'package:aqualink/screens/home.dart';
 import 'package:aqualink/widgets/customAppbar.dart';
+import 'package:aqualink/widgets/bottomNavigationbar.dart';
 
 void main() {
   runApp(const Home());
@@ -34,6 +35,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -889,6 +898,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+        ),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
       ),
     );

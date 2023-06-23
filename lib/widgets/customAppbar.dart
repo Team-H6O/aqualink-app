@@ -1,28 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AppBar personnalisée',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0), // Hauteur personnalisée
-          child: MyAppBar(), // Utilisation de l'AppBar personnalisée
-        ),
-        body: Center(
-          child: Text('Contenu de l\'écran'),
-        ),
-      ),
-    );
-  }
-}
-
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
