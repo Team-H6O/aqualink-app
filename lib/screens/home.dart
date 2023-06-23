@@ -468,7 +468,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Icon(
                           Icons.chevron_right,
-                          color: Color(0xFFA2A2A2),
+                          color: AppTheme.darkPrimaryColor,
                           size: 28,
                         ),
                       ],
@@ -539,7 +539,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Icon(
                               Icons.chevron_right,
-                              color: Color(0xFFA2A2A2),
+                              color: AppTheme.darkPrimaryColor,
                               size: 20,
                             ),
                           ],
@@ -595,7 +595,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Icon(
                               Icons.chevron_right,
-                              color: Color(0xFFA2A2A2),
+                              color: AppTheme.darkPrimaryColor,
                               size: 20,
                             ),
                           ],
@@ -663,7 +663,7 @@ class _HomePageState extends State<HomePage> {
                                       0, 3, 2, 0),
                                   child: Icon(
                                     Icons.chevron_right,
-                                    color: Color(0xFFA2A2A2),
+                                    color: AppTheme.darkPrimaryColor,
                                     size: 20,
                                   ),
                                 ),
@@ -734,7 +734,7 @@ class _HomePageState extends State<HomePage> {
                                       0, 3, 2, 0),
                                   child: Icon(
                                     Icons.chevron_right,
-                                    color: Color(0xFFA2A2A2),
+                                    color: AppTheme.darkPrimaryColor,
                                     size: 20,
                                   ),
                                 ),
@@ -777,7 +777,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Image.asset(
                                 'assets/image/object/globe.png',
-                                width: 35,
+                                width: 30,
                                 fit: BoxFit.cover,
                               ),
                               Expanded(
@@ -842,7 +842,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Image.asset(
                                 'assets/image/object/euro.png',
-                                width: 35,
+                                width: 30,
                                 fit: BoxFit.cover,
                               ),
                               Expanded(
