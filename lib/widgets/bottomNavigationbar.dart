@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
+import 'package:aqualink/screens/articles.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:aqualink/screens/articles.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -30,7 +31,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   size: 30,
                 ),
               ),
-              Container(
+              GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Articles()),
+                );
+              },
+              child: Container(
                 width: 50,
                 height: 50,
                 clipBehavior: Clip.antiAlias,
@@ -41,6 +50,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   'https://picsum.photos/seed/508/600',
                   fit: BoxFit.cover,
                 ),
+              ),
               ),
             ],
           ),
