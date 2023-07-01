@@ -424,7 +424,7 @@ class _HomePageState extends State<HomePage> {
                                       '4 appareils',
                                       style: TextStyle(
                                         fontSize: AppTheme.headline6Size,
-                                        fontWeight: FontWeight.w300,
+                                        fontWeight: FontWeight.w400,
                                         color: AppTheme.grayColor,
                                       ),
                                     ),

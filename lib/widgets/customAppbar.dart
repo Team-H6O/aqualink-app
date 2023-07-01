@@ -24,6 +24,19 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.replay,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                  onPressed: () {
+                    // ... Function to refresh the view
+                  },
+                ),
+              ),
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                 child: Icon(
                   Icons.notifications_none,
@@ -32,25 +45,24 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const Articles()),
-                );
-              },
-              child: Container(
-                width: 50,
-                height: 50,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Articles()),
+                  );
+                },
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.network(
+                    'https://picsum.photos/seed/508/600',
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                child: Image.network(
-                  'https://picsum.photos/seed/508/600',
-                  fit: BoxFit.cover,
-                ),
-              ),
               ),
             ],
           ),
