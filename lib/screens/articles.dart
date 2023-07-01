@@ -4,6 +4,7 @@ import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/simpleAppbar.dart';
 import 'package:aqualink/widgets/bottomNavigationbar.dart';
 import 'package:aqualink/widgets/article.dart';
+import 'package:aqualink/widgets/filter.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:provider/provider.dart';
 
@@ -58,7 +59,7 @@ class ArticlesPage extends StatefulWidget {
 }
 
 class _ArticlesPageState extends State<ArticlesPage> {
-    int _selectedIndex = 0;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -67,129 +68,52 @@ class _ArticlesPageState extends State<ArticlesPage> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return GestureDetector(
-    child: Scaffold(
-      backgroundColor: AppTheme.nearWhiteColor,
-      appBar: SimpleAppBar(title: 'Articles'),
-      body: SafeArea(
-        top: true,
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-          child: SingleChildScrollView(
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Scaffold(
+        backgroundColor: AppTheme.nearWhiteColor,
+        appBar: SimpleAppBar(title: 'Articles'),
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    _openModalBottomSheet(context);
-                  },
-                  child: Text('Ouvrir la fenêtre modale'),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                  child: HorizontalFilter(),
                 ),
-                Article(title: 'Article 1', description: 'Article 1 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard...', path: 'https://picsum.photos/seed/175/600'),
-                Article(title: 'Article 2', description: 'Article 2 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard...', path: 'https://picsum.photos/seed/176/600'),
-                Article(title: 'Article 3', description: 'Article 3 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard...', path: 'https://picsum.photos/seed/177/600'),
+                Expanded(
+                  child: ListView(
+                    children: <Widget>[
+                      Article(
+                          title: 'Article 1',
+                          description:
+                              'Article 1 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard...',
+                          path: 'https://picsum.photos/seed/175/600'),
+                      Article(
+                          title: 'Article 2',
+                          description:
+                              'Article 2 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard...',
+                          path: 'https://picsum.photos/seed/176/600'),
+                      Article(
+                          title: 'Article 3',
+                          description:
+                              'Article 3 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard...',
+                          path: 'https://picsum.photos/seed/177/600'),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(
+        bottomNavigationBar: CustomBottomNavigationBar(
           selectedIndex: _selectedIndex,
           onItemTapped: _onItemTapped,
         ),
-    ),
-  );
-}
-
-void _openModalBottomSheet(BuildContext context) {
-showModalBottomSheet(
-  context: context,
-  shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(13),
-        topRight: Radius.circular(13),
       ),
-  ),
-builder: (BuildContext context) {
-      return Container(
-        height: MediaQuery.of(context).size.height * 0.8,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context); // Ferme la fenêtre modale
-                  },
-                  child: Padding(padding: EdgeInsets.fromLTRB(0, 15, 15, 7), child:                  Text(
-                    'Done',
-                    style: TextStyle(
-                    fontSize: AppTheme.headline5Size,
-                    fontWeight: FontWeight.w500,
-                    color: AppTheme.darkPrimaryColor,
-                  ),
-                  ),),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-            Container(
-              height: 180,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://picsum.photos/seed/175/600', // Remplacez l'URL de l'image par votre propre URL
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(padding: EdgeInsets.fromLTRB(20, 0, 20, 0), child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-            Text(
-              'Titre de l\'article',
-              style: TextStyle(
-                    fontSize: AppTheme.headline3Size,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Description de l\'article',
-              style: TextStyle(
-                    fontSize: AppTheme.headline6Size,
-                  ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Sous-titre de l\'article',
-              style: TextStyle(
-                    fontSize: AppTheme.headline5Size,
-                    fontWeight: FontWeight.w600,
-                  ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Contenu de l\'article',
-              style: TextStyle(
-                    fontSize: AppTheme.headline6Size,
-                  ),
-            ),
-              ],)
-            ),
-
-            // Ajoutez ici d'autres widgets pour le contenu de l'article
-          ],
-        ),
-      );
-    },
-);
-}
-
+    );
+  }
 }
