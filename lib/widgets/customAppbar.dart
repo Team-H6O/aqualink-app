@@ -31,9 +31,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.black,
                     size: 30,
                   ),
-                  onPressed: () {
-                    // ... Function to refresh the view
-                  },
+                  onPressed: () {},
                 ),
               ),
               Padding(
@@ -45,12 +43,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Articles()),
-                  );
-                },
+                onTap: () {},
                 child: Container(
                   width: 50,
                   height: 50,

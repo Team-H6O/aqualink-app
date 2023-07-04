@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/login.dart';
-import 'package:aqualink/screens/home.dart';
+import 'package:aqualink/screens/navigation.dart';
 
 void main() {
   runApp(const Register());
@@ -459,7 +459,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Home()),
+                                        builder: (context) =>
+                                            const Navigation()),
                                   );
                                 },
                                 child: Text('Register'),

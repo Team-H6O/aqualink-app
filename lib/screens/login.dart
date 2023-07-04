@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/register.dart';
-import 'package:aqualink/screens/home.dart';
+import 'package:aqualink/screens/navigation.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:provider/provider.dart';
 
@@ -353,7 +353,8 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Home()),
+                                        builder: (context) =>
+                                            const Navigation()),
                                   );
                                 },
                                 child: Text('Sign In'),

@@ -4,7 +4,6 @@ import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/register.dart';
 import 'package:aqualink/screens/home.dart';
 import 'package:aqualink/widgets/customAppbar.dart';
-import 'package:aqualink/widgets/bottomNavigationbar.dart';
 
 void main() {
   runApp(const Home());
@@ -896,12 +895,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 70,
+              ),
             ],
           ),
-        ),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
         ),
       ),
     );

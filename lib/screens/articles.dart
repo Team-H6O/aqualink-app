@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/simpleAppbar.dart';
-import 'package:aqualink/widgets/bottomNavigationbar.dart';
 import 'package:aqualink/widgets/article.dart';
 import 'package:aqualink/widgets/filter.dart';
 // import 'package:google_fonts/google_fonts.dart';
@@ -108,10 +107,6 @@ class _ArticlesPageState extends State<ArticlesPage> {
               ],
             ),
           ),
-        ),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
         ),
       ),
     );
