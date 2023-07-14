@@ -66,7 +66,7 @@ class _AlertPageState extends State<AlertPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Sélectionner un seuil d'alerte en litre"),
+            title: Text("Sélectionner un seuil en litre"),
             content: StatefulBuilder(builder: (context, SBsetState) {
               return NumberPicker(
                   selectedTextStyle:
@@ -103,7 +103,7 @@ class _AlertPageState extends State<AlertPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Sélectionner un seuil d'alerte en litre"),
+            title: Text("Sélectionner un seuil en litre"),
             content: StatefulBuilder(builder: (context, SBsetState) {
               return NumberPicker(
                   selectedTextStyle:
@@ -144,7 +144,7 @@ class _AlertPageState extends State<AlertPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: 20),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
               child: Container(
