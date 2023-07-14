@@ -2,6 +2,7 @@ import 'package:aqualink/screens/login.dart';
 import 'package:aqualink/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
+import 'package:aqualink/screens/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme(),
+      routes: {
+        '/home': (context) => Home(),
+      },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:aqualink/screens/parameter.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/screens/articles.dart';
+import 'package:aqualink/screens/parameter.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -43,7 +45,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ParameterPage()),
+                  );
+                },
                 child: Container(
                   width: 50,
                   height: 50,
