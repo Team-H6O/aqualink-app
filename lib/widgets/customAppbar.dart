@@ -2,6 +2,7 @@ import 'package:aqualink/screens/parameter.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/screens/articles.dart';
 import 'package:aqualink/screens/parameter.dart';
+import 'package:aqualink/screens/addSensor.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -16,10 +17,19 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-            child: Icon(
-              Icons.add,
-              color: Colors.black,
-              size: 35,
+            child: IconButton(
+              icon: const Icon(
+                Icons.add,
+                color: Colors.black,
+                size: 35,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AddSensorPage()),
+                );
+              },
             ),
           ),
           Row(

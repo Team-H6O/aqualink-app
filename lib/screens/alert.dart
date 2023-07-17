@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/returnAppbar.dart';
@@ -26,14 +27,21 @@ class _AlertPageState extends State<AlertPage> {
 
   void _openLiterDayPicker() {
     showDialog<int>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Sélectionner un seuil en litre"),
+      context: context,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: AlertDialog(
+            title: Text(
+              "Sélectionner un seuil en litre",
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
             content: StatefulBuilder(builder: (context, SBsetState) {
               return NumberPicker(
                   selectedTextStyle:
-                      TextStyle(color: AppTheme.darkPrimaryColor),
+                      TextStyle(color: AppTheme.darkPrimaryColor, fontSize: 35),
                   value: _selectedLiterDay,
                   minValue: 0,
                   maxValue: 100,
@@ -45,94 +53,175 @@ class _AlertPageState extends State<AlertPage> {
                   });
             }),
             actions: [
-              TextButton(
-                child: Text(
-                  "Sélectionner",
-                  style: TextStyle(
-                    color: AppTheme.darkPrimaryColor,
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: MediaQuery.sizeOf(context).width * 0.4,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 35),
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      backgroundColor: AppTheme.darkPrimaryColor,
+                      textStyle: const TextStyle(
+                        fontSize: AppTheme.bodyText2Size,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      elevation: 2,
+                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text('Sélectionner'),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+              ),
+              SizedBox(
+                height: 10,
               )
             ],
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   void _openLiterWeekPicker() {
     showDialog<int>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Sélectionner un seuil en litre"),
-            content: StatefulBuilder(builder: (context, SBsetState) {
-              return NumberPicker(
-                  selectedTextStyle:
-                      TextStyle(color: AppTheme.darkPrimaryColor),
-                  value: _selectedLiterWeek,
-                  minValue: 0,
-                  maxValue: 100,
-                  onChanged: (value) {
-                    setState(() => _selectedLiterWeek =
-                        value); // to change on widget level state
-                    SBsetState(() => _selectedLiterWeek =
-                        value); //* to change on dialog state
-                  });
-            }),
+      context: context,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: AlertDialog(
+            title: Text(
+              "Sélectionner un seuil en litre",
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            content: StatefulBuilder(
+              builder: (context, SBsetState) {
+                return NumberPicker(
+                    selectedTextStyle: TextStyle(
+                        color: AppTheme.darkPrimaryColor, fontSize: 35),
+                    value: _selectedLiterWeek,
+                    minValue: 0,
+                    maxValue: 100,
+                    onChanged: (value) {
+                      setState(() => _selectedLiterWeek =
+                          value); // to change on widget level state
+                      SBsetState(() => _selectedLiterWeek =
+                          value); //* to change on dialog state
+                    });
+              },
+            ),
             actions: [
-              TextButton(
-                child: Text(
-                  "Sélectionner",
-                  style: TextStyle(
-                    color: AppTheme.darkPrimaryColor,
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: MediaQuery.sizeOf(context).width * 0.4,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 35),
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      backgroundColor: AppTheme.darkPrimaryColor,
+                      textStyle: const TextStyle(
+                        fontSize: AppTheme.bodyText2Size,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      elevation: 2,
+                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text('Sélectionner'),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+              ),
+              SizedBox(
+                height: 10,
               )
             ],
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   void _openLiterMonthPicker() {
     showDialog<int>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Sélectionner un seuil en litre"),
-            content: StatefulBuilder(builder: (context, SBsetState) {
-              return NumberPicker(
-                  selectedTextStyle:
-                      TextStyle(color: AppTheme.darkPrimaryColor),
-                  value: _selectedLiterMonth,
-                  minValue: 0,
-                  maxValue: 100,
-                  onChanged: (value) {
-                    setState(() => _selectedLiterMonth =
-                        value); // to change on widget level state
-                    SBsetState(() => _selectedLiterMonth =
-                        value); //* to change on dialog state
-                  });
-            }),
+      context: context,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: AlertDialog(
+            title: Text(
+              "Sélectionner un seuil en litre",
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            content: StatefulBuilder(
+              builder: (context, SBsetState) {
+                return NumberPicker(
+                    selectedTextStyle: TextStyle(
+                        color: AppTheme.darkPrimaryColor, fontSize: 35),
+                    value: _selectedLiterMonth,
+                    minValue: 0,
+                    maxValue: 100,
+                    onChanged: (value) {
+                      setState(() => _selectedLiterMonth =
+                          value); // to change on widget level state
+                      SBsetState(() => _selectedLiterMonth =
+                          value); //* to change on dialog state
+                    });
+              },
+            ),
             actions: [
-              TextButton(
-                child: Text(
-                  "Sélectionner",
-                  style: TextStyle(
-                    color: AppTheme.darkPrimaryColor,
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: MediaQuery.sizeOf(context).width * 0.4,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 35),
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      backgroundColor: AppTheme.darkPrimaryColor,
+                      textStyle: const TextStyle(
+                        fontSize: AppTheme.bodyText2Size,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      elevation: 2,
+                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text('Sélectionner'),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+              ),
+              SizedBox(
+                height: 10,
               )
             ],
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   @override

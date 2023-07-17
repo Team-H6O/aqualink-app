@@ -7,6 +7,7 @@ import 'package:aqualink/widgets/article.dart';
 import 'package:aqualink/widgets/filter.dart';
 import 'package:aqualink/screens/home.dart';
 import 'package:aqualink/screens/navigation.dart';
+import 'package:aqualink/screens/addSensor.dart';
 import 'package:aqualink/screens/profil.dart';
 import 'package:aqualink/screens/planLeave.dart';
 import 'package:aqualink/screens/monitoringAlert.dart';
@@ -76,11 +77,11 @@ class _ParameterPageState extends State<ParameterPage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const Navigation()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddSensorPage()),
+                          );
                         },
                         child: Container(
                           width: double.infinity,

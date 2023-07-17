@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/returnAppbar.dart';
@@ -21,20 +22,30 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
       firstDate: DateTime(2023),
       lastDate: DateTime(2025),
       builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: AppTheme.darkPrimaryColor, // header background color
-              onPrimary: AppTheme.whiteColor, // header text color
-              onSurface: AppTheme.darkPrimaryColor, // body text color
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                foregroundColor: AppTheme.darkPrimaryColor, // button text color
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              dialogTheme: DialogTheme(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      16.0), // this is the border radius of the picker
+                ),
+              ),
+              colorScheme: ColorScheme.light(
+                primary: AppTheme.darkPrimaryColor, // header background color
+                onPrimary: AppTheme.whiteColor, // header text color
+                onSurface: AppTheme.darkPrimaryColor, // body text color
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  foregroundColor:
+                      AppTheme.darkPrimaryColor, // button text color
+                ),
               ),
             ),
+            child: child!,
           ),
-          child: child!,
         );
       },
     );
@@ -56,20 +67,30 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
       firstDate: DateTime(2023),
       lastDate: DateTime(2025),
       builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: AppTheme.darkPrimaryColor, // header background color
-              onPrimary: AppTheme.whiteColor, // header text color
-              onSurface: AppTheme.darkPrimaryColor, // body text color
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                foregroundColor: AppTheme.darkPrimaryColor, // button text color
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              dialogTheme: DialogTheme(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      16.0), // this is the border radius of the picker
+                ),
+              ),
+              colorScheme: ColorScheme.light(
+                primary: AppTheme.darkPrimaryColor, // header background color
+                onPrimary: AppTheme.whiteColor, // header text color
+                onSurface: AppTheme.darkPrimaryColor, // body text color
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  foregroundColor:
+                      AppTheme.darkPrimaryColor, // button text color
+                ),
               ),
             ),
+            child: child!,
           ),
-          child: child!,
         );
       },
     );
