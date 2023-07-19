@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage>
                                                     const Login()),
                                           );
                                         },
-                                        child: Text('Sign In'),
+                                        child: Text('Se connecter'),
                                         style: ElevatedButton.styleFrom(
                                           minimumSize:
                                               Size(double.infinity, 45),
@@ -192,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage>
                                                       const Register()),
                                             );
                                           },
-                                          child: Text('Register'),
+                                          child: Text("S'inscrire"),
                                           style: ElevatedButton.styleFrom(
                                             minimumSize:
                                                 Size(double.infinity, 45),

@@ -42,13 +42,23 @@ class _ParameterPageState extends State<ParameterPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            Align(
               alignment: Alignment.center,
-              padding: EdgeInsets.all(16),
-              height: 130,
-              child: CircleAvatar(
-                radius: 60,
-                backgroundImage: AssetImage('assets/images/profile_image.jpg'),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(16),
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle, // Définir la forme en cercle
+                  color: AppTheme.whiteColor,
+                  image: DecorationImage(
+                    image: AssetImage(
+                        'assets/image/profile/profilePic.png'), // Chemin vers votre image
+                    fit: BoxFit
+                        .cover, // Cette propriété définit l'ajustement de l'image pour remplir le container
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 16),
@@ -537,7 +547,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'About',
+                                        'À propos',
                                         style: TextStyle(
                                           fontSize: AppTheme.headline6Size,
                                           fontWeight: FontWeight.w400,
@@ -590,7 +600,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Privacy & Messaging',
+                                        'Politique de confidentialité',
                                         style: TextStyle(
                                           fontSize: AppTheme.headline6Size,
                                           fontWeight: FontWeight.w400,

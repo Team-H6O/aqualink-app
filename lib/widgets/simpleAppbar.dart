@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/screens/articles.dart';
+import 'package:aqualink/screens/navigation.dart';
 
 class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -12,6 +12,18 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,
+      leading: IconTheme(
+        data: IconThemeData(size: 40, color: AppTheme.blackColor),
+        child: IconButton(
+          icon: Icon(Icons.chevron_left),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Navigation()),
+            );
+          },
+        ),
+      ),
       title: Text(
         title,
         textAlign: TextAlign.center,

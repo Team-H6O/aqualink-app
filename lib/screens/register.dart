@@ -130,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    'Register to',
+                                    'Rejoignez',
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.w600,
@@ -167,7 +167,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Center(
                                 child: TextFormField(
                                   // controller: _model.textController1,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintText: 'NOM Prénom',
@@ -224,7 +223,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                 child: Center(
                                   child: TextFormField(
                                     // controller: _model.textController1,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: 'Email',
@@ -282,10 +280,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 child: Center(
                                   child: TextFormField(
                                     // controller: _model.textController2,
-                                    autofocus: true,
-                                    // obscureText: !_model.passwordVisibility,
+                                    obscureText: true,
                                     decoration: InputDecoration(
-                                      hintText: 'Password',
+                                      hintText: 'Mot de passe',
                                       hintStyle: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
@@ -352,10 +349,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 child: Center(
                                   child: TextFormField(
                                     // controller: _model.textController2,
-                                    autofocus: true,
-                                    // obscureText: !_model.passwordVisibility,
+                                    obscureText: true,
                                     decoration: InputDecoration(
-                                      hintText: 'Confirm password',
+                                      hintText: 'Confirmer le mot de passe',
                                       hintStyle: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
@@ -442,7 +438,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     ),
                                   ),
                                   Text(
-                                    'Agree to our Terms of Service and Privacy Policy',
+                                    "Accepter nos conditions d'utilisation",
                                     style: TextStyle(
                                       fontSize: AppTheme.bodyText2Size,
                                       color: AppTheme.darkPrimaryColor,
@@ -463,7 +459,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                             const Navigation()),
                                   );
                                 },
-                                child: Text('Register'),
+                                child: Text("S'inscrire"),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(double.infinity, 45),
                                   padding: EdgeInsets.zero,
@@ -566,7 +562,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const Text(
-                        'Already have an account ?',
+                        'Vous avez déjà un compte ?',
                         style: TextStyle(
                           fontSize: AppTheme.bodyText2Size,
                           color: AppTheme.grayColor,
@@ -583,7 +579,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             );
                           },
                           child: const Text(
-                            'Sign In',
+                            'Se connecter',
                             style: TextStyle(
                               fontSize: AppTheme.bodyText2Size,
                               fontWeight: FontWeight.w600,

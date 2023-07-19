@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    'Login to',
+                                    'Bienvenue sur',
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.w600,
@@ -172,7 +172,6 @@ class _LoginPageState extends State<LoginPage> {
                               child: Center(
                                 child: TextFormField(
                                   // controller: _model.textController1,
-                                  autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintText: 'Email',
@@ -229,10 +228,9 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Center(
                                   child: TextFormField(
                                     // controller: _model.textController2,
-                                    autofocus: true,
-                                    // obscureText: !_model.passwordVisibility,
+                                    obscureText: true,
                                     decoration: InputDecoration(
-                                      hintText: 'Password',
+                                      hintText: 'Mot de passe',
                                       hintStyle: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
@@ -327,7 +325,7 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                       ),
                                       Text(
-                                        'Remember me',
+                                        'Se rappeler de moi',
                                         style: TextStyle(
                                           fontSize: AppTheme.bodyText2Size,
                                           color: AppTheme.darkPrimaryColor,
@@ -336,7 +334,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ],
                                   ),
                                   Text(
-                                    'Forget your password ?',
+                                    'Mot de passe oublié ?',
                                     style: TextStyle(
                                       fontSize: AppTheme.bodyText2Size,
                                       color: AppTheme.darkPrimaryColor,
@@ -357,7 +355,7 @@ class _LoginPageState extends State<LoginPage> {
                                             const Navigation()),
                                   );
                                 },
-                                child: Text('Sign In'),
+                                child: Text("S'inscrire"),
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size(double.infinity, 45),
                                   padding: EdgeInsets.zero,
@@ -460,7 +458,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const Text(
-                        'Don\'t have an account ?',
+                        "Vous n'avez pas de compte ?",
                         style: TextStyle(
                           fontSize: AppTheme.bodyText2Size,
                           color: AppTheme.grayColor,
@@ -477,7 +475,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: const Text(
-                            'Register',
+                            "S'inscrire",
                             style: TextStyle(
                               fontSize: AppTheme.bodyText2Size,
                               fontWeight: FontWeight.w600,

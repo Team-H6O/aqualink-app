@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/returnAppbar.dart';
+import 'package:aqualink/screens/searchingSensor.dart';
 
 class AddSensorPage extends StatefulWidget {
   const AddSensorPage({Key, key}) : super(key: key);
@@ -47,30 +48,28 @@ class _AddSensorPageState extends State<AddSensorPage> {
                   ),
                   decoration: InputDecoration(
                     hintText: 'Numéro de série',
-                    suffixIcon: _textEditingController.text.isNotEmpty
-                        ? IconButton(
-                            padding: EdgeInsets.fromLTRB(15, 15, 0,
-                                0), // Réduction du padding du bouton croix
-                            onPressed: () {
-                              setState(() {
-                                _textEditingController.clear();
-                              });
-                            },
-                            icon: Container(
-                              width: 16.0,
-                              height: 16.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppTheme.grayColor,
-                              ),
-                              child: Icon(
-                                Icons.clear,
-                                size: 10.0,
-                                color: AppTheme.whiteColor,
-                              ),
-                            ),
-                          )
-                        : null,
+                    suffixIcon: IconButton(
+                      padding: EdgeInsets.fromLTRB(
+                          15, 15, 0, 0), // Réduction du padding du bouton croix
+                      onPressed: () {
+                        setState(() {
+                          _textEditingController.clear();
+                        });
+                      },
+                      icon: Container(
+                        width: 16.0,
+                        height: 16.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppTheme.grayColor,
+                        ),
+                        child: Icon(
+                          Icons.clear,
+                          size: 10.0,
+                          color: AppTheme.whiteColor,
+                        ),
+                      ),
+                    ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppTheme.darkPrimaryColor,
@@ -92,7 +91,11 @@ class _AddSensorPageState extends State<AddSensorPage> {
                       String searchQuery = _textEditingController.text;
                       print(
                           'Rechercher avec le numéro de série : $searchQuery');
-                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SearchingSensorPage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 35),
@@ -110,6 +113,21 @@ class _AddSensorPageState extends State<AddSensorPage> {
                       ),
                     ),
                     child: Text('Rechercher'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 13,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'Annuler',
+                    style: TextStyle(color: AppTheme.grayColor),
                   ),
                 ),
               ),
@@ -213,7 +231,11 @@ class _AddSensorPageState extends State<AddSensorPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchingSensorPage()),
+                  );
                 },
                 child: Text('Rechercher'),
                 style: ElevatedButton.styleFrom(

@@ -122,7 +122,7 @@ class Article extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(0, 15, 15, 13),
                           child: Text(
-                            'Close',
+                            'Fermer',
                             style: TextStyle(
                               fontSize: AppTheme.headline5Size,
                               fontWeight: FontWeight.w500,

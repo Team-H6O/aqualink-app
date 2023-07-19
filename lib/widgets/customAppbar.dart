@@ -1,5 +1,6 @@
 import 'package:aqualink/screens/parameter.dart';
 import 'package:flutter/material.dart';
+import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/articles.dart';
 import 'package:aqualink/screens/parameter.dart';
 import 'package:aqualink/screens/addSensor.dart';
@@ -63,15 +64,19 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   );
                 },
                 child: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(16),
                   width: 50,
                   height: 50,
-                  clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.network(
-                    'https://picsum.photos/seed/508/600',
-                    fit: BoxFit.cover,
+                    shape: BoxShape.circle, // Définir la forme en cercle
+                    color: AppTheme.whiteColor,
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/image/profile/profilePic.png'), // Chemin vers votre image
+                      fit: BoxFit
+                          .cover, // Cette propriété définit l'ajustement de l'image pour remplir le container
+                    ),
                   ),
                 ),
               ),

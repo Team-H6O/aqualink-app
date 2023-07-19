@@ -15,7 +15,7 @@ class _NavigationState extends State<Navigation> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(title: "Accueil"),
-    const Articles()
+    const ArticlesPage()
   ];
 
   void onItemTapped(int index) {

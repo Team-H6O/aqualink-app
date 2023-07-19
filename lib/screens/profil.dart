@@ -21,12 +21,21 @@ class ProfilPage extends StatefulWidget {
 }
 
 class _ProfilPageState extends State<ProfilPage> {
-  int _selectedIndex = 0;
+  TextEditingController _controllerLastname = TextEditingController();
+  TextEditingController _controllerFirstname = TextEditingController();
+  TextEditingController _controllerEmail = TextEditingController();
+  TextEditingController _controllerPhone = TextEditingController();
+  TextEditingController _controllerPassword = TextEditingController();
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void initState() {
+    super.initState();
+
+    _controllerLastname.text = "TRUONG";
+    _controllerFirstname.text = "Jacky";
+    _controllerEmail.text = "jacky.truong@edu.devinci.fr";
+    _controllerPhone.text = "0600000000";
+    _controllerPassword.text = "123456789";
   }
 
   @override
@@ -38,13 +47,23 @@ class _ProfilPageState extends State<ProfilPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            Align(
               alignment: Alignment.center,
-              padding: EdgeInsets.all(16),
-              height: 130,
-              child: CircleAvatar(
-                radius: 60,
-                backgroundImage: AssetImage('assets/images/profile_image.jpg'),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(16),
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle, // Définir la forme en cercle
+                  color: AppTheme.whiteColor,
+                  image: DecorationImage(
+                    image: AssetImage(
+                        'assets/image/profile/profilePic.png'), // Chemin vers votre image
+                    fit: BoxFit
+                        .cover, // Cette propriété définit l'ajustement de l'image pour remplir le container
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 16),
@@ -96,9 +115,8 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                             Expanded(
                               child: TextFormField(
-                                // controller: _model.textController1,
+                                controller: _controllerLastname,
                                 textAlign: TextAlign.right,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
@@ -180,9 +198,8 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                             Expanded(
                               child: TextFormField(
-                                // controller: _model.textController1,
+                                controller: _controllerFirstname,
                                 textAlign: TextAlign.right,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
@@ -242,7 +259,7 @@ class _ProfilPageState extends State<ProfilPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: MediaQuery.sizeOf(context).width * 0.4,
+                              width: MediaQuery.sizeOf(context).width * 0.25,
                               decoration: BoxDecoration(),
                               child: Padding(
                                 padding:
@@ -264,9 +281,8 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                             Expanded(
                               child: TextFormField(
-                                // controller: _model.textController1,
+                                controller: _controllerEmail,
                                 textAlign: TextAlign.right,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
@@ -348,9 +364,8 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                             Expanded(
                               child: TextFormField(
-                                // controller: _model.textController1,
+                                controller: _controllerPhone,
                                 textAlign: TextAlign.right,
-                                autofocus: true,
                                 obscureText: false,
                                 keyboardType: TextInputType.number,
                                 inputFormatters: <TextInputFormatter>[
@@ -439,9 +454,8 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                             Expanded(
                               child: TextFormField(
-                                // controller: _model.textController1,
+                                controller: _controllerPassword,
                                 textAlign: TextAlign.right,
-                                autofocus: true,
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
