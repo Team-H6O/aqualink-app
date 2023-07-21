@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/returnAppbar.dart';
+import 'package:aqualink/screens/successAddSensor.dart';
 
 class SensorChooseRoomEquipmentPage extends StatefulWidget {
   final String title;
@@ -60,14 +61,12 @@ class _SensorChooseRoomEquipmentPageState
                       // Logique de recherche avec le numéro de série
                       String searchQuery = _textEditingController.text;
                       print('Utiliser la pièce : $searchQuery');
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => SensorChooseRoomEquipmentPage(
-                      //       title: searchQuery,
-                      //     ),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SuccessAddSensorPage(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 35),

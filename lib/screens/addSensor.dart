@@ -147,8 +147,8 @@ class _AddSensorPageState extends State<AddSensorPage> {
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
         appBar: ReturnAppBar(title: ''),
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

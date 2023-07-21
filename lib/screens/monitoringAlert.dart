@@ -43,7 +43,7 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
 
     List<Room> roomList = [
       Room(name: 'Cuisine', equipments: kitchenEquipments),
-      Room(name: 'Cuisine', equipments: bathroomEquipments),
+      Room(name: 'Salle de bain', equipments: bathroomEquipments),
     ];
 
     return GestureDetector(

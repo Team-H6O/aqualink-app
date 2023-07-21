@@ -1,21 +1,16 @@
-import 'package:aqualink/screens/monitoringAlert.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/returnAppbar.dart';
-import 'package:aqualink/widgets/article.dart';
-import 'package:aqualink/widgets/filter.dart';
-import 'package:aqualink/screens/home.dart';
-import 'package:aqualink/screens/navigation.dart';
 import 'package:aqualink/screens/addSensor.dart';
 import 'package:aqualink/screens/profil.dart';
 import 'package:aqualink/screens/planLeave.dart';
+import 'package:aqualink/screens/deleteSensor.dart';
 import 'package:aqualink/screens/monitoringAlert.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:provider/provider.dart';
-
-// import 'Parameter_model.dart';
-// export 'Parameter_model.dart';
+import 'package:aqualink/screens/renameSensor.dart';
+import 'package:aqualink/screens/support.dart';
+import 'package:aqualink/screens/about.dart';
+import 'package:aqualink/screens/privacy.dart';
 
 class ParameterPage extends StatefulWidget {
   const ParameterPage({super.key});
@@ -140,11 +135,11 @@ class _ParameterPageState extends State<ParameterPage> {
                       Divider(),
                       InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const Navigation()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RenameSensorPage()),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
@@ -193,11 +188,11 @@ class _ParameterPageState extends State<ParameterPage> {
                       Divider(),
                       InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const Navigation()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DeleteSensorPage()),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
@@ -466,11 +461,11 @@ class _ParameterPageState extends State<ParameterPage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const Navigation()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SupportPage()),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
@@ -519,11 +514,11 @@ class _ParameterPageState extends State<ParameterPage> {
                       Divider(),
                       InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const Navigation()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AboutPage()),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
@@ -572,11 +567,11 @@ class _ParameterPageState extends State<ParameterPage> {
                       Divider(),
                       InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const Navigation()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PrivacyPage()),
+                          );
                         },
                         child: Container(
                           width: double.infinity,

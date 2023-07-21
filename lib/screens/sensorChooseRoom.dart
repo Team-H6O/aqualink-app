@@ -154,13 +154,13 @@ class _SensorChooseRoomPageState extends State<SensorChooseRoomPage> {
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
         appBar: ReturnAppBar(title: _pageTitle),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: Container(
+        body: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 16),
+              Container(
                 height: 40,
                 child: Center(
                   child: TextFormField(
@@ -218,23 +218,20 @@ class _SensorChooseRoomPageState extends State<SensorChooseRoomPage> {
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
-              child: Text(
-                "CHOIX DE LA PIÈCE",
-                style: TextStyle(
-                  fontSize: AppTheme.subtitle1Size,
-                  color: AppTheme.grayColor,
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                child: Text(
+                  "CHOIX DE LA PIÈCE",
+                  style: TextStyle(
+                    fontSize: AppTheme.subtitle1Size,
+                    color: AppTheme.grayColor,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-              child: Container(
+              Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -325,8 +322,8 @@ class _SensorChooseRoomPageState extends State<SensorChooseRoomPage> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

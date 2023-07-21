@@ -75,106 +75,163 @@ class _LoginPageState extends State<LoginPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.85,
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.25,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Stack(
+        body: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.85,
+                decoration: BoxDecoration(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Stack(
+                            children: [
+                              Container(
+                                width: 125,
+                                height: 125,
+                                decoration: BoxDecoration(
+                                  color: AppTheme.nearWhiteColor,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4,
+                                      color: Color(0x33000000),
+                                      offset: Offset(0, 2),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/logo/logo_drop.png',
+                                      // width: 50,
+                                      // height: 50,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  width: 125,
-                                  height: 125,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.nearWhiteColor,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4,
-                                        color: Color(0x33000000),
-                                        offset: Offset(0, 2),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(14),
+                                const Text(
+                                  'Bienvenue sur',
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        'assets/logo/logo_drop.png',
-                                        // width: 50,
-                                        // height: 50,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4, 0, 0, 0),
+                                  child: Text(
+                                    'Aqualink',
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppTheme.darkPrimaryColor,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'Bienvenue sur',
-                                    style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                    ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 45,
+                            child: Center(
+                              child: TextFormField(
+                                // controller: _model.textController1,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  hintText: 'Email',
+                                  hintStyle: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppTheme.grayColor,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        4, 0, 0, 0),
-                                    child: Text(
-                                      'Aqualink',
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppTheme.darkPrimaryColor,
-                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
                                     ),
+                                    borderRadius: BorderRadius.circular(14),
                                   ),
-                                ],
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          16, 0, 16, 0),
+                                ),
+                                // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
+                                // validator: _model.textController1Validator
+                                //     .asValidator(context),
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: MediaQuery.of(context).size.height * 0.6,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                            child: Container(
                               height: 45,
                               child: Center(
                                 child: TextFormField(
-                                  // controller: _model.textController1,
-                                  obscureText: false,
+                                  // controller: _model.textController2,
+                                  obscureText: true,
                                   decoration: InputDecoration(
-                                    hintText: 'Email',
+                                    hintText: 'Mot de passe',
                                     hintStyle: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
@@ -213,282 +270,216 @@ class _LoginPageState extends State<LoginPage> {
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16, 0, 16, 0),
+                                    // suffixIcon: InkWell(
+                                    //   onTap: () => setState(
+                                    //     () => _model.passwordVisibility = !_model.passwordVisibility,
+                                    //   ),
+                                    //   focusNode: FocusNode(skipTraversal: true),
+                                    //   child: Icon(
+                                    //     _model.passwordVisibility
+                                    //         ? Icons.visibility_outlined
+                                    //         : Icons.visibility_off_outlined,
+                                    //     color: Color(0xFF757575),
+                                    //     size: 22,
+                                    //   ),
+                                    // ),
                                   ),
                                   // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                  // validator: _model.textController1Validator
-                                  //     .asValidator(context),
+                                  // validator: _model.textController2Validator.asValidator(context),
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                              child: Container(
-                                height: 45,
-                                child: Center(
-                                  child: TextFormField(
-                                    // controller: _model.textController2,
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: 'Mot de passe',
-                                      hintStyle: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppTheme.grayColor,
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1,
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
                                         ),
-                                        borderRadius: BorderRadius.circular(14),
+                                        unselectedWidgetColor:
+                                            Color(0xFFF5F5F5),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(14),
+                                      child: Checkbox(
+                                        value:
+                                            true, // value: _model.checkboxValue ??= true,
+                                        onChanged: (newValue) async {
+                                          // setState(() => _model
+                                          //     .checkboxValue = newValue!);
+                                        },
+                                        activeColor: AppTheme.darkPrimaryColor,
                                       ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16, 0, 16, 0),
-                                      // suffixIcon: InkWell(
-                                      //   onTap: () => setState(
-                                      //     () => _model.passwordVisibility = !_model.passwordVisibility,
-                                      //   ),
-                                      //   focusNode: FocusNode(skipTraversal: true),
-                                      //   child: Icon(
-                                      //     _model.passwordVisibility
-                                      //         ? Icons.visibility_outlined
-                                      //         : Icons.visibility_off_outlined,
-                                      //     color: Color(0xFF757575),
-                                      //     size: 22,
-                                      //   ),
-                                      // ),
                                     ),
-                                    // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                    // validator: _model.textController2Validator.asValidator(context),
+                                    Text(
+                                      'Se rappeler de moi',
+                                      style: TextStyle(
+                                        fontSize: AppTheme.bodyText2Size,
+                                        color: AppTheme.darkPrimaryColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Mot de passe oublié ?',
+                                  style: TextStyle(
+                                    fontSize: AppTheme.bodyText2Size,
+                                    color: AppTheme.darkPrimaryColor,
                                   ),
                                 ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Navigation()),
+                                );
+                              },
+                              child: Text("S'inscrire"),
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(double.infinity, 45),
+                                padding: EdgeInsets.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                backgroundColor: AppTheme.darkPrimaryColor,
+                                textStyle: const TextStyle(
+                                  fontSize: AppTheme.headline6Size,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                elevation: 2,
+                                side: BorderSide(color: Color(0x00FFFFFF)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(60, 40, 60, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Theme(
-                                        data: ThemeData(
-                                          checkboxTheme: CheckboxThemeData(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(4),
-                                            ),
-                                          ),
-                                          unselectedWidgetColor:
-                                              Color(0xFFF5F5F5),
-                                        ),
-                                        child: Checkbox(
-                                          value:
-                                              true, // value: _model.checkboxValue ??= true,
-                                          onChanged: (newValue) async {
-                                            // setState(() => _model
-                                            //     .checkboxValue = newValue!);
-                                          },
-                                          activeColor:
-                                              AppTheme.darkPrimaryColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Se rappeler de moi',
-                                        style: TextStyle(
-                                          fontSize: AppTheme.bodyText2Size,
-                                          color: AppTheme.darkPrimaryColor,
-                                        ),
+                                      FaIcon(
+                                        FontAwesomeIcons.google,
+                                        color: Color(0xFFFF5252),
+                                        size: 20,
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    'Mot de passe oublié ?',
-                                    style: TextStyle(
-                                      fontSize: AppTheme.bodyText2Size,
-                                      color: AppTheme.darkPrimaryColor,
-                                    ),
+                                ),
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF1877F2),
+                                    shape: BoxShape.circle,
                                   ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Navigation()),
-                                  );
-                                },
-                                child: Text("S'inscrire"),
-                                style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(double.infinity, 45),
-                                  padding: EdgeInsets.zero,
-                                  tapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  backgroundColor: AppTheme.darkPrimaryColor,
-                                  textStyle: const TextStyle(
-                                    fontSize: AppTheme.headline6Size,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  elevation: 2,
-                                  side: BorderSide(color: Color(0x00FFFFFF)),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FaIcon(
+                                        FontAwesomeIcons.facebookF,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ),
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FaIcon(
+                                        FontAwesomeIcons.apple,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(60, 40, 60, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        FaIcon(
-                                          FontAwesomeIcons.google,
-                                          color: Color(0xFFFF5252),
-                                          size: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF1877F2),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        FaIcon(
-                                          FontAwesomeIcons.facebookF,
-                                          color: Colors.white,
-                                          size: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        FaIcon(
-                                          FontAwesomeIcons.apple,
-                                          color: Colors.white,
-                                          size: 20,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Text(
-                        "Vous n'avez pas de compte ?",
-                        style: TextStyle(
-                          fontSize: AppTheme.bodyText2Size,
-                          color: AppTheme.grayColor,
-                        ),
+              ),
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.1,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Text(
+                      "Vous n'avez pas de compte ?",
+                      style: TextStyle(
+                        fontSize: AppTheme.bodyText2Size,
+                        color: AppTheme.grayColor,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Register()),
-                            );
-                          },
-                          child: const Text(
-                            "S'inscrire",
-                            style: TextStyle(
-                              fontSize: AppTheme.bodyText2Size,
-                              fontWeight: FontWeight.w600,
-                              color: AppTheme.darkPrimaryColor,
-                            ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Register()),
+                          );
+                        },
+                        child: const Text(
+                          "S'inscrire",
+                          style: TextStyle(
+                            fontSize: AppTheme.bodyText2Size,
+                            fontWeight: FontWeight.w600,
+                            color: AppTheme.darkPrimaryColor,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

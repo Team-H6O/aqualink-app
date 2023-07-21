@@ -3,6 +3,7 @@ import 'package:aqualink/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/home.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme(),
+      builder: FToastBuilder(),
       routes: {
         '/home': (context) => Home(),
       },

@@ -110,11 +110,11 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Programmer une absence'),
+        appBar: ReturnAppBar(title: 'Planifier une absence'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: 40),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
               child: Container(
