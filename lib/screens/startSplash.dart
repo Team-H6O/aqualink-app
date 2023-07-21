@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:aqualink/screens/landing.dart';
+import 'package:aqualink/screens/Landing/landing.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: StartSplashScreen(), // Utilise StartSplashScreen comme page d'accueil
+      home:
+          StartSplashScreen(), // Utilise StartSplashScreen comme page d'accueil
     );
   }
 }
@@ -28,11 +29,13 @@ class _StartSplashScreenState extends State<StartSplashScreen> {
   }
 
   void navigateToLanding() async {
-    await Future.delayed(Duration(seconds: 2)); // Simuler une attente de 2 secondes
+    await Future.delayed(
+        Duration(seconds: 2)); // Simuler une attente de 2 secondes
 
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Landing()), // Naviguer vers la page Landing()
+      MaterialPageRoute(
+          builder: (context) => Landing()), // Naviguer vers la page Landing()
     );
   }
 

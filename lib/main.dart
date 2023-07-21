@@ -1,8 +1,8 @@
-import 'package:aqualink/screens/login.dart';
-import 'package:aqualink/screens/register.dart';
+import 'package:aqualink/screens/Landing/login.dart';
+import 'package:aqualink/screens/Landing/register.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/screens/home.dart';
+import 'package:aqualink/screens/Home/home.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
