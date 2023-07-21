@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
-import 'package:aqualink/screens/NewSensor/addSensor.dart';
 import 'package:aqualink/screens/NewSensor/listSensors.dart';
 
 class SearchingSensorPage extends StatefulWidget {
@@ -55,7 +53,7 @@ class _SearchingSensorPageState extends State<SearchingSensorPage> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
               Stack(
@@ -63,7 +61,7 @@ class _SearchingSensorPageState extends State<SearchingSensorPage> {
                   Container(
                     width: 200,
                     height: 200,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppTheme.nearWhiteColor,
                       boxShadow: [
                         BoxShadow(
@@ -89,12 +87,12 @@ class _SearchingSensorPageState extends State<SearchingSensorPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
-              Center(
+              const Center(
                 child: SizedBox(
-                  width: 135, // Prend 100% de la largeur disponible
+                  width: 135,
                   child: Text(
                     'Recherche des',
                     style: TextStyle(
@@ -106,10 +104,10 @@ class _SearchingSensorPageState extends State<SearchingSensorPage> {
                 ),
               ),
               SizedBox(
-                width: 85, // Ajuster la largeur souhaitée ici
+                width: 85,
                 child: Text(
                   _loadingText,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: AppTheme.headline5Size,
                       fontWeight: FontWeight.w400,
                       color: AppTheme.darkPrimaryColor),

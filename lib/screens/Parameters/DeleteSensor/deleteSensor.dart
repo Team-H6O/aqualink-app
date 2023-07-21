@@ -1,9 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
-import 'package:aqualink/screens/Navigation/navigation.dart';
 
 class DeleteSensorPage extends StatefulWidget {
   const DeleteSensorPage({super.key});
@@ -71,7 +69,7 @@ class _DeleteSensorPageState extends State<DeleteSensorPage> {
           child: AlertDialog(
             title: Text(
               "Le capteur $sensorName de la pièce $roomName va être supprimer. Cette opération sera irréversible.",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: AppTheme.bodyText1Size,
                 fontWeight: FontWeight.w600,
               ),
@@ -88,11 +86,6 @@ class _DeleteSensorPageState extends State<DeleteSensorPage> {
                     onPressed: () {
                       _deleteEquipmentFromRoom(sensorName, roomName);
                       Navigator.of(context).pop();
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => const Navigation()),
-                      // );
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 35),

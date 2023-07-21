@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/screens/Articles/articles.dart';
 
 class ReturnAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -14,11 +13,10 @@ class ReturnAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       automaticallyImplyLeading: false,
       leading: IconTheme(
-        data: IconThemeData(size: 40, color: AppTheme.blackColor),
+        data: const IconThemeData(size: 40, color: AppTheme.blackColor),
         child: IconButton(
           icon: Icon(Icons.chevron_left),
           onPressed: () {
-            // Action du bouton retour
             Navigator.pop(context);
           },
         ),
@@ -26,7 +24,7 @@ class ReturnAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: AppTheme.headline4Size,
           fontWeight: FontWeight.w500,
           color: AppTheme.blackColor,

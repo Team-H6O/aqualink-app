@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/screens/Landing/register.dart';
-import 'package:aqualink/screens/Home/home.dart';
 import 'package:aqualink/widgets/Appbar/customAppbar.dart';
 
 void main() {
@@ -52,13 +49,13 @@ class _HomePageState extends State<HomePage> {
           child: MyAppBar(),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(
+          padding: const EdgeInsets.fromLTRB(
               20, 0, 20, 0), // Ajoute un padding pour éviter le débordement
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: Text(
                   'Ma consommation',
@@ -68,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                 child: Text(
                   'Mes statistiques',

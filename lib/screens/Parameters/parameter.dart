@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/NewSensor/addSensor.dart';
-import 'package:aqualink/screens/Parameters/Profile/profil.dart';
-import 'package:aqualink/screens/Parameters/PlanLeave/planLeave.dart';
+import 'package:aqualink/screens/Parameters/RenameSensor/renameSensor.dart';
 import 'package:aqualink/screens/Parameters/DeleteSensor/deleteSensor.dart';
 import 'package:aqualink/screens/Parameters/MonitoringAlert/monitoringAlert.dart';
-import 'package:aqualink/screens/Parameters/RenameSensor/renameSensor.dart';
+import 'package:aqualink/screens/Parameters/Profile/profil.dart';
+import 'package:aqualink/screens/Parameters/PlanLeave/planLeave.dart';
 import 'package:aqualink/screens/Parameters/Support/support.dart';
 import 'package:aqualink/screens/Parameters/About/about.dart';
 import 'package:aqualink/screens/Parameters/Privacy/privacy.dart';
@@ -20,20 +19,12 @@ class ParameterPage extends StatefulWidget {
 }
 
 class _ParameterPageState extends State<ParameterPage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Paramètres'),
+        appBar: const ReturnAppBar(title: 'Paramètres'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,10 +32,10 @@ class _ParameterPageState extends State<ParameterPage> {
               alignment: Alignment.center,
               child: Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 width: 100,
                 height: 100,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle, // Définir la forme en cercle
                   color: AppTheme.whiteColor,
                   image: DecorationImage(
@@ -56,8 +47,8 @@ class _ParameterPageState extends State<ParameterPage> {
                 ),
               ),
             ),
-            SizedBox(height: 16),
-            Padding(
+            const SizedBox(height: 16),
+            const Padding(
               padding: EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
               child: Text(
                 "AQUALINK",
@@ -103,7 +94,7 @@ class _ParameterPageState extends State<ParameterPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -121,7 +112,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -132,7 +123,7 @@ class _ParameterPageState extends State<ParameterPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -155,8 +146,8 @@ class _ParameterPageState extends State<ParameterPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -174,7 +165,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -185,7 +176,7 @@ class _ParameterPageState extends State<ParameterPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -209,7 +200,7 @@ class _ParameterPageState extends State<ParameterPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -227,7 +218,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -238,7 +229,7 @@ class _ParameterPageState extends State<ParameterPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -263,7 +254,7 @@ class _ParameterPageState extends State<ParameterPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -281,7 +272,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -297,10 +288,10 @@ class _ParameterPageState extends State<ParameterPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
               child: Text(
                 "PROFIL",
@@ -319,7 +310,7 @@ class _ParameterPageState extends State<ParameterPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -346,7 +337,7 @@ class _ParameterPageState extends State<ParameterPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -364,7 +355,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -375,7 +366,7 @@ class _ParameterPageState extends State<ParameterPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -399,7 +390,7 @@ class _ParameterPageState extends State<ParameterPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -417,7 +408,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -433,10 +424,10 @@ class _ParameterPageState extends State<ParameterPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 22,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
               child: Text(
                 "APP",
@@ -481,8 +472,8 @@ class _ParameterPageState extends State<ParameterPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -500,7 +491,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -511,7 +502,7 @@ class _ParameterPageState extends State<ParameterPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -534,8 +525,8 @@ class _ParameterPageState extends State<ParameterPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -553,7 +544,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,
@@ -564,7 +555,7 @@ class _ParameterPageState extends State<ParameterPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -587,8 +578,8 @@ class _ParameterPageState extends State<ParameterPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.78,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -606,7 +597,7 @@ class _ParameterPageState extends State<ParameterPage> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Icon(
                                   Icons.arrow_forward_ios,
                                   color: AppTheme.grayColor,

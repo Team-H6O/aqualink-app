@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/Navigation/navigation.dart';
 
 class SuccessAddSensorPage extends StatefulWidget {
@@ -24,7 +22,7 @@ class _SuccessAddSensorPageState extends State<SuccessAddSensorPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 250,
                   ),
                   Image.asset(
@@ -33,20 +31,20 @@ class _SuccessAddSensorPageState extends State<SuccessAddSensorPage> {
                     height: 130,
                     fit: BoxFit.contain,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  Text(
+                  const Text(
                     'Votre capteur a bien été ajouté !',
                     style: TextStyle(
                         fontSize: AppTheme.headline3Size,
                         fontWeight: FontWeight.w600,
                         color: AppTheme.darkPrimaryColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
-                  Text(
+                  const Text(
                     "Vous pouvez dès à présent consulter les données relevées par ce dernier, ainsi que configurer ses seuils d'alerte.",
                     style: TextStyle(
                         fontSize: AppTheme.headline6Size,
@@ -54,7 +52,7 @@ class _SuccessAddSensorPageState extends State<SuccessAddSensorPage> {
                         color: AppTheme.darkPrimaryColor),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   ElevatedButton(
@@ -65,7 +63,6 @@ class _SuccessAddSensorPageState extends State<SuccessAddSensorPage> {
                             builder: (context) => const Navigation()),
                       );
                     },
-                    child: Text("Retourner à la page d'accueil"),
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 45),
                       padding: EdgeInsets.zero,
@@ -76,11 +73,12 @@ class _SuccessAddSensorPageState extends State<SuccessAddSensorPage> {
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
+                    child: const Text("Retourner à la page d'accueil"),
                   ),
                 ],
               ),

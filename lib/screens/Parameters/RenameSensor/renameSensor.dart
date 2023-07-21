@@ -1,10 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:collection/collection.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
-import 'package:aqualink/screens/Navigation/navigation.dart';
 
 class RenameSensorPage extends StatefulWidget {
   const RenameSensorPage({super.key});
@@ -28,7 +25,7 @@ class Room {
 }
 
 class _RenameSensorPageState extends State<RenameSensorPage> {
-  TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
 
   // Définir la liste roomList comme une variable membre de la classe
   List<Room> roomList = [];
@@ -61,7 +58,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
     Equipment(name: 'Toilette'),
   ];
 
-  // Étape 1 : Fonction pour mettre à jour le nom de l'équipement
+  // Fonction pour mettre à jour le nom de l'équipement
   void _updateEquipmentName(String newName, String roomName, String oldName) {
     setState(() {
       // Trouver la pièce avec le nom donné
@@ -97,7 +94,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                 child: AlertDialog(
                   title: Text(
                     'Renommez $sensorName',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: AppTheme.bodyText1Size,
                       fontWeight: FontWeight.w800,
                     ),
@@ -111,14 +108,13 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                     children: [
                       TextField(
                         controller: _textEditingController,
-                        // initialValue: "dsqqs",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: AppTheme.subtitle1Size,
                           color: AppTheme.blackColor,
                         ),
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
-                            padding: EdgeInsets.fromLTRB(15, 15, 0,
+                            padding: const EdgeInsets.fromLTRB(15, 15, 0,
                                 0), // Réduction du padding du bouton croix
                             onPressed: () {
                               setState(() {
@@ -128,18 +124,18 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                             icon: Container(
                               width: 16.0,
                               height: 16.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: AppTheme.grayColor,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.clear,
                                 size: 10.0,
                                 color: AppTheme.whiteColor,
                               ),
                             ),
                           ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                               color: AppTheme.darkPrimaryColor,
                             ),
@@ -147,7 +143,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                           contentPadding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       // DropdownButton<String>(
@@ -202,7 +198,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                             Navigator.of(context).pop();
                           },
                           style: ElevatedButton.styleFrom(
-                            minimumSize: Size(double.infinity, 35),
+                            minimumSize: const Size(double.infinity, 35),
                             padding: EdgeInsets.zero,
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             backgroundColor: AppTheme.darkPrimaryColor,
@@ -211,16 +207,16 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                               fontWeight: FontWeight.w600,
                             ),
                             elevation: 2,
-                            side: BorderSide(color: Color(0x00FFFFFF)),
+                            side: const BorderSide(color: Color(0x00FFFFFF)),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          child: Text('Enregistrer les modifications'),
+                          child: const Text('Enregistrer les modifications'),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 13,
                     ),
                     Align(
@@ -235,7 +231,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     )
                   ],
@@ -291,7 +287,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Renommer un Aqualink'),
+        appBar: const ReturnAppBar(title: 'Renommer un Aqualink'),
         body: ListView.builder(
           itemCount: roomList.length,
           primary: false,
@@ -308,14 +304,14 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                   padding: EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
                   child: Text(
                     room.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: AppTheme.subtitle1Size,
                       color: AppTheme.grayColor,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -323,7 +319,8 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -360,15 +357,14 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                                               0.76,
                                           decoration: BoxDecoration(),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 0, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
                                                   equipment.name,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize:
                                                         AppTheme.headline6Size,
                                                     fontWeight: FontWeight.w400,
@@ -385,7 +381,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                                             _renameSensorAlertDialog(
                                                 room.name, equipment.name);
                                           },
-                                          child: Icon(
+                                          child: const Icon(
                                             Icons.edit,
                                             color: AppTheme.grayColor,
                                             size: 20,
@@ -395,7 +391,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                                     ),
                                   ),
                                   if (!isLastEquipment)
-                                    Divider(), // Ajouter le Divider ici
+                                    const Divider(), // Ajouter le Divider ici
                                 ],
                               );
                             },
@@ -406,7 +402,7 @@ class _RenameSensorPageState extends State<RenameSensorPage> {
                   ),
                 ),
                 if (!isLastRoom)
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
               ],

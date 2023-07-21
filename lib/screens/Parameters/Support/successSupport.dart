@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/Navigation/navigation.dart';
 
 class SuccessSupportPage extends StatefulWidget {
@@ -20,11 +18,11 @@ class _SuccessSupportPageState extends State<SuccessSupportPage> {
         body: Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 250,
                   ),
                   Image.asset(
@@ -33,20 +31,20 @@ class _SuccessSupportPageState extends State<SuccessSupportPage> {
                     height: 130,
                     fit: BoxFit.contain,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  Text(
+                  const Text(
                     'Merci pour votre message !',
                     style: TextStyle(
                         fontSize: AppTheme.headline3Size,
                         fontWeight: FontWeight.w600,
                         color: AppTheme.darkPrimaryColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
-                  Text(
+                  const Text(
                     "L'équipe support d'AQUALINK reviendra vers vous dans les plus brefs délais.",
                     style: TextStyle(
                         fontSize: AppTheme.headline6Size,
@@ -54,7 +52,7 @@ class _SuccessSupportPageState extends State<SuccessSupportPage> {
                         color: AppTheme.darkPrimaryColor),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   ElevatedButton(
@@ -65,9 +63,8 @@ class _SuccessSupportPageState extends State<SuccessSupportPage> {
                             builder: (context) => const Navigation()),
                       );
                     },
-                    child: Text("Retourner à la page d'accueil"),
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 45),
+                      minimumSize: const Size(double.infinity, 45),
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       backgroundColor: AppTheme.darkPrimaryColor,
@@ -76,11 +73,12 @@ class _SuccessSupportPageState extends State<SuccessSupportPage> {
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
+                    child: const Text("Retourner à la page d'accueil"),
                   ),
                 ],
               ),

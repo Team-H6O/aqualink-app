@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
-import 'package:aqualink/widgets/Articles/article.dart';
-import 'package:aqualink/widgets/Articles/filter.dart';
-import 'package:aqualink/screens/Home/home.dart';
-import 'package:aqualink/screens/Navigation/navigation.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:provider/provider.dart';
-
-// import 'Profil_model.dart';
-// export 'Profil_model.dart';
 
 class ProfilPage extends StatefulWidget {
   const ProfilPage({super.key});
@@ -21,11 +11,11 @@ class ProfilPage extends StatefulWidget {
 }
 
 class _ProfilPageState extends State<ProfilPage> {
-  TextEditingController _controllerLastname = TextEditingController();
-  TextEditingController _controllerFirstname = TextEditingController();
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerPhone = TextEditingController();
-  TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerLastname = TextEditingController();
+  final TextEditingController _controllerFirstname = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerPhone = TextEditingController();
+  final TextEditingController _controllerPassword = TextEditingController();
 
   @override
   void initState() {
@@ -43,7 +33,7 @@ class _ProfilPageState extends State<ProfilPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Profil'),
+        appBar: const ReturnAppBar(title: 'Profil'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,21 +44,20 @@ class _ProfilPageState extends State<ProfilPage> {
                 padding: EdgeInsets.all(16),
                 width: 100,
                 height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle, // Définir la forme en cercle
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
                   color: AppTheme.whiteColor,
                   image: DecorationImage(
                     image: AssetImage(
                         'assets/image/profile/profilePic.png'), // Chemin vers votre image
-                    fit: BoxFit
-                        .cover, // Cette propriété définit l'ajustement de l'image pour remplir le container
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -76,7 +65,7 @@ class _ProfilPageState extends State<ProfilPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -94,8 +83,8 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.4,
-                              decoration: BoxDecoration(),
-                              child: Padding(
+                              decoration: const BoxDecoration(),
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -118,7 +107,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                 controller: _controllerLastname,
                                 textAlign: TextAlign.right,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintStyle: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
@@ -154,15 +143,12 @@ class _ProfilPageState extends State<ProfilPage> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
                                 ),
-                                // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                // validator: _model.textController1Validator
-                                //     .asValidator(context),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       Container(
                         width: double.infinity,
                         height: 22,
@@ -177,8 +163,8 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.4,
-                              decoration: BoxDecoration(),
-                              child: Padding(
+                              decoration: const BoxDecoration(),
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -201,7 +187,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                 controller: _controllerFirstname,
                                 textAlign: TextAlign.right,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintStyle: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
@@ -237,15 +223,12 @@ class _ProfilPageState extends State<ProfilPage> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
                                 ),
-                                // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                // validator: _model.textController1Validator
-                                //     .asValidator(context),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       Container(
                         width: double.infinity,
                         height: 22,
@@ -260,8 +243,8 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.25,
-                              decoration: BoxDecoration(),
-                              child: Padding(
+                              decoration: const BoxDecoration(),
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -284,7 +267,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                 controller: _controllerEmail,
                                 textAlign: TextAlign.right,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintStyle: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
@@ -320,15 +303,12 @@ class _ProfilPageState extends State<ProfilPage> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
                                 ),
-                                // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                // validator: _model.textController1Validator
-                                //     .asValidator(context),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       Container(
                         width: double.infinity,
                         height: 22,
@@ -343,8 +323,8 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.4,
-                              decoration: BoxDecoration(),
-                              child: Padding(
+                              decoration: const BoxDecoration(),
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -374,7 +354,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                   ),
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintStyle: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
@@ -410,15 +390,12 @@ class _ProfilPageState extends State<ProfilPage> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
                                 ),
-                                // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                // validator: _model.textController1Validator
-                                //     .asValidator(context),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       Container(
                         width: double.infinity,
                         height: 22,
@@ -433,8 +410,8 @@ class _ProfilPageState extends State<ProfilPage> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.4,
-                              decoration: BoxDecoration(),
-                              child: Padding(
+                              decoration: const BoxDecoration(),
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -457,7 +434,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                 controller: _controllerPassword,
                                 textAlign: TextAlign.right,
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintStyle: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
@@ -493,9 +470,6 @@ class _ProfilPageState extends State<ProfilPage> {
                                       EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
                                 ),
-                                // style: Theme.of(context).textTheme.headline3.copyWith(textAlign: TextAlign.center),
-                                // validator: _model.textController1Validator
-                                //     .asValidator(context),
                               ),
                             ),
                           ],
@@ -506,18 +480,17 @@ class _ProfilPageState extends State<ProfilPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Enregistrer les modifications'),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 45),
+                  minimumSize: const Size(double.infinity, 45),
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   backgroundColor: AppTheme.darkPrimaryColor,
@@ -526,11 +499,12 @@ class _ProfilPageState extends State<ProfilPage> {
                     fontWeight: FontWeight.w600,
                   ),
                   elevation: 2,
-                  side: BorderSide(color: Color(0x00FFFFFF)),
+                  side: const BorderSide(color: Color(0x00FFFFFF)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
+                child: const Text('Enregistrer les modifications'),
               ),
             ),
           ],

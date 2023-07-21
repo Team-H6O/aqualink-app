@@ -1,7 +1,5 @@
-import 'package:aqualink/screens/Parameters/parameter.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
-import 'package:aqualink/screens/Articles/articles.dart';
 import 'package:aqualink/screens/Parameters/parameter.dart';
 import 'package:aqualink/screens/NewSensor/addSensor.dart';
 
@@ -10,14 +8,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return // Generated code for this Row Widget...
         Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(15, 25, 15, 10),
+      padding: const EdgeInsetsDirectional.fromSTEB(15, 25, 15, 10),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
             child: IconButton(
               icon: const Icon(
                 Icons.add,
@@ -37,7 +35,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
                 child: IconButton(
                   icon: const Icon(
                     Icons.replay,
@@ -47,7 +45,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: () {},
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                 child: Icon(
                   Icons.notifications_none,
@@ -65,10 +63,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   width: 50,
                   height: 50,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle, // Définir la forme en cercle
                     color: AppTheme.whiteColor,
                     image: DecorationImage(
@@ -88,5 +86,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(100.0); // Hauteur personnalisée
+  Size get preferredSize =>
+      const Size.fromHeight(100.0); // Hauteur personnalisée
 }

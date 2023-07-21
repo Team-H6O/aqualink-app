@@ -1,9 +1,6 @@
-import 'package:aqualink/screens/Parameters/MonitoringAlert/monitoringAlert.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
-import 'package:aqualink/screens/Parameters/MonitoringAlert/monitoringAlert.dart';
 import 'package:aqualink/screens/NewSensor/sensorChooseRoom.dart';
 
 class ListSensorsPage extends StatefulWidget {
@@ -27,11 +24,11 @@ class _ListSensorsPageState extends State<ListSensorsPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Liste des capteurs'),
+        appBar: const ReturnAppBar(title: 'Liste des capteurs'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
               child: Container(
@@ -83,14 +80,15 @@ class _ListSensorsPageState extends State<ListSensorsPage> {
                                         0.78,
                                     decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
                                             sensorName,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.black,
@@ -100,7 +98,7 @@ class _ListSensorsPageState extends State<ListSensorsPage> {
                                       ),
                                     ),
                                   ),
-                                  Expanded(
+                                  const Expanded(
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: Colors.grey,

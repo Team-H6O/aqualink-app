@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -32,7 +31,7 @@ class _AlertPageState extends State<AlertPage> {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: AlertDialog(
-            title: Text(
+            title: const Text(
               "Sélectionner un seuil en litre",
             ),
             shape: RoundedRectangleBorder(
@@ -80,7 +79,7 @@ class _AlertPageState extends State<AlertPage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],
@@ -97,7 +96,7 @@ class _AlertPageState extends State<AlertPage> {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: AlertDialog(
-            title: Text(
+            title: const Text(
               "Sélectionner un seuil en litre",
             ),
             shape: RoundedRectangleBorder(
@@ -106,7 +105,7 @@ class _AlertPageState extends State<AlertPage> {
             content: StatefulBuilder(
               builder: (context, SBsetState) {
                 return NumberPicker(
-                    selectedTextStyle: TextStyle(
+                    selectedTextStyle: const TextStyle(
                         color: AppTheme.darkPrimaryColor, fontSize: 35),
                     value: _selectedLiterWeek,
                     minValue: 0,
@@ -129,7 +128,7 @@ class _AlertPageState extends State<AlertPage> {
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 35),
+                      minimumSize: const Size(double.infinity, 35),
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       backgroundColor: AppTheme.darkPrimaryColor,
@@ -138,16 +137,16 @@ class _AlertPageState extends State<AlertPage> {
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Sélectionner'),
+                    child: const Text('Sélectionner'),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],
@@ -164,7 +163,7 @@ class _AlertPageState extends State<AlertPage> {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: AlertDialog(
-            title: Text(
+            title: const Text(
               "Sélectionner un seuil en litre",
             ),
             shape: RoundedRectangleBorder(
@@ -173,7 +172,7 @@ class _AlertPageState extends State<AlertPage> {
             content: StatefulBuilder(
               builder: (context, SBsetState) {
                 return NumberPicker(
-                    selectedTextStyle: TextStyle(
+                    selectedTextStyle: const TextStyle(
                         color: AppTheme.darkPrimaryColor, fontSize: 35),
                     value: _selectedLiterMonth,
                     minValue: 0,
@@ -196,7 +195,7 @@ class _AlertPageState extends State<AlertPage> {
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 35),
+                      minimumSize: const Size(double.infinity, 35),
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       backgroundColor: AppTheme.darkPrimaryColor,
@@ -205,16 +204,16 @@ class _AlertPageState extends State<AlertPage> {
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Sélectionner'),
+                    child: const Text('Sélectionner'),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],
@@ -233,7 +232,7 @@ class _AlertPageState extends State<AlertPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
               child: Container(
@@ -309,7 +308,7 @@ class _AlertPageState extends State<AlertPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Visibility(
@@ -342,7 +341,7 @@ class _AlertPageState extends State<AlertPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.68,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -381,7 +380,7 @@ class _AlertPageState extends State<AlertPage> {
                             ],
                           ),
                         ),
-                        Divider(),
+                        const Divider(),
                         Container(
                           width: double.infinity,
                           height: 22,
@@ -397,7 +396,7 @@ class _AlertPageState extends State<AlertPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.4,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -430,7 +429,7 @@ class _AlertPageState extends State<AlertPage> {
                                           alignment: Alignment.centerRight,
                                           child: Text(
                                             '$_selectedLiterDay L',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: AppTheme.headline6Size,
                                               fontWeight: FontWeight.w400,
                                               color: AppTheme.darkPrimaryColor,
@@ -459,13 +458,13 @@ class _AlertPageState extends State<AlertPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Visibility(
               visible: _switchValueAll,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -473,7 +472,8 @@ class _AlertPageState extends State<AlertPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -491,8 +491,8 @@ class _AlertPageState extends State<AlertPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.68,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -531,7 +531,7 @@ class _AlertPageState extends State<AlertPage> {
                             ],
                           ),
                         ),
-                        Divider(),
+                        const Divider(),
                         Container(
                           width: double.infinity,
                           height: 22,
@@ -546,8 +546,8 @@ class _AlertPageState extends State<AlertPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.4,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -580,7 +580,7 @@ class _AlertPageState extends State<AlertPage> {
                                           alignment: Alignment.centerRight,
                                           child: Text(
                                             '$_selectedLiterWeek L',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: AppTheme.headline6Size,
                                               fontWeight: FontWeight.w400,
                                               color: AppTheme.darkPrimaryColor,
@@ -609,7 +609,7 @@ class _AlertPageState extends State<AlertPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Visibility(
@@ -641,8 +641,8 @@ class _AlertPageState extends State<AlertPage> {
                             children: [
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.68,
-                                decoration: BoxDecoration(),
-                                child: Padding(
+                                decoration: const BoxDecoration(),
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -681,7 +681,7 @@ class _AlertPageState extends State<AlertPage> {
                             ],
                           ),
                         ),
-                        Divider(),
+                        const Divider(),
                         Container(
                           width: double.infinity,
                           height: 22,
@@ -697,7 +697,7 @@ class _AlertPageState extends State<AlertPage> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 0.4,
                                 decoration: BoxDecoration(),
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 0),
                                   child: Row(
@@ -730,7 +730,7 @@ class _AlertPageState extends State<AlertPage> {
                                           alignment: Alignment.centerRight,
                                           child: Text(
                                             '$_selectedLiterMonth L',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: AppTheme.headline6Size,
                                               fontWeight: FontWeight.w400,
                                               color: AppTheme.darkPrimaryColor,

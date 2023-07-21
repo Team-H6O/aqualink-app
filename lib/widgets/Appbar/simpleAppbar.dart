@@ -27,7 +27,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: AppTheme.headline4Size,
           fontWeight: FontWeight.w500,
           color: AppTheme.blackColor,
@@ -37,5 +37,5 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(70.0); // Hauteur personnalisée
+  Size get preferredSize => const Size.fromHeight(70.0);
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/Parameters/Support/successSupport.dart';
@@ -18,14 +16,14 @@ class _SupportPageState extends State<SupportPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Support'),
+        appBar: const ReturnAppBar(title: 'Support'),
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(
+          padding: const EdgeInsets.fromLTRB(
               20, 0, 20, 0), // Ajoute un padding pour éviter le débordement
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Stack(
@@ -33,7 +31,7 @@ class _SupportPageState extends State<SupportPage> {
                   Container(
                     width: 150,
                     height: 150,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppTheme.nearWhiteColor,
                       boxShadow: [
                         BoxShadow(
@@ -59,41 +57,41 @@ class _SupportPageState extends State<SupportPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               TextFormField(
                 obscureText: false,
                 decoration: InputDecoration(
                   hintText: 'Email',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: AppTheme.grayColor,
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
@@ -101,44 +99,45 @@ class _SupportPageState extends State<SupportPage> {
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  contentPadding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                  contentPadding:
+                      const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TextFormField(
                 obscureText: false,
                 decoration: InputDecoration(
                   hintText: 'Objet',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: AppTheme.grayColor,
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
@@ -149,7 +148,7 @@ class _SupportPageState extends State<SupportPage> {
                   contentPadding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TextFormField(
@@ -159,34 +158,34 @@ class _SupportPageState extends State<SupportPage> {
                 maxLength: 400,
                 decoration: InputDecoration(
                   hintText: 'Votre message',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: AppTheme.grayColor,
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0x00000000),
                       width: 1,
                     ),
@@ -197,7 +196,7 @@ class _SupportPageState extends State<SupportPage> {
                   contentPadding: EdgeInsetsDirectional.fromSTEB(16, 25, 16, 0),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               ElevatedButton(
@@ -208,9 +207,8 @@ class _SupportPageState extends State<SupportPage> {
                         builder: (context) => const SuccessSupportPage()),
                   );
                 },
-                child: Text('Envoyer votre message'),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 45),
+                  minimumSize: const Size(double.infinity, 45),
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   backgroundColor: AppTheme.darkPrimaryColor,
@@ -219,11 +217,12 @@ class _SupportPageState extends State<SupportPage> {
                     fontWeight: FontWeight.w600,
                   ),
                   elevation: 2,
-                  side: BorderSide(color: Color(0x00FFFFFF)),
+                  side: const BorderSide(color: Color(0x00FFFFFF)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
+                child: const Text('Envoyer votre message'),
               ),
             ],
           ),

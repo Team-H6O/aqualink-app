@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/Parameters/MonitoringAlert/alert.dart';
@@ -49,7 +47,7 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Gérer mes alertes'),
+        appBar: const ReturnAppBar(title: 'Gérer mes alertes'),
         body: ListView.builder(
           itemCount: roomList.length,
           primary: false,
@@ -63,17 +61,17 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(40, 10, 20, 0),
                   child: Text(
                     room.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: AppTheme.subtitle1Size,
                       color: AppTheme.grayColor,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -81,7 +79,8 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -128,14 +127,15 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
                                                 0.78,
                                             decoration: BoxDecoration(),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 0, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
                                                     equipment.name,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: AppTheme
                                                           .headline6Size,
                                                       fontWeight:
@@ -148,7 +148,7 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
                                               ),
                                             ),
                                           ),
-                                          Expanded(
+                                          const Expanded(
                                             child: Icon(
                                               Icons.arrow_forward_ios,
                                               color: AppTheme.grayColor,
@@ -160,7 +160,7 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
                                     ),
                                   ),
                                   if (!isLastEquipment)
-                                    Divider(), // Ajouter le Divider ici
+                                    const Divider(), // Ajouter le Divider ici
                                 ],
                               );
                             },
@@ -171,7 +171,7 @@ class _MonitoringAlertPageState extends State<MonitoringAlertPage> {
                   ),
                 ),
                 if (!isLastRoom)
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
               ],

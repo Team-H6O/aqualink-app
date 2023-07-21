@@ -1,6 +1,4 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 
@@ -15,7 +13,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Scaffold(
+      child: const Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
         appBar: ReturnAppBar(title: 'Politique de confidentialité'),
         body: SingleChildScrollView(

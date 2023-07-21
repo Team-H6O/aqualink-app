@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/simpleAppbar.dart';
 import 'package:aqualink/widgets/Articles/article.dart';
@@ -18,7 +17,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: SimpleAppBar(title: 'Articles'),
+        appBar: const SimpleAppBar(title: 'Articles'),
         body: SafeArea(
           top: true,
           child: Padding(

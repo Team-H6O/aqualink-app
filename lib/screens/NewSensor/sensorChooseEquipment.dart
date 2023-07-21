@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/NewSensor/successAddSensor.dart';
@@ -43,7 +42,7 @@ class _SensorChooseRoomEquipmentPageState
           child: AlertDialog(
             title: Text(
               "Le capteur ${widget.name} de l'équipement $sensorName va être ajouté à la pièce ${widget.title}.",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: AppTheme.bodyText1Size,
                 fontWeight: FontWeight.w600,
               ),
@@ -78,16 +77,16 @@ class _SensorChooseRoomEquipmentPageState
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Ajouter'),
+                    child: const Text('Ajouter'),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 13,
               ),
               Align(
@@ -102,7 +101,7 @@ class _SensorChooseRoomEquipmentPageState
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],
@@ -119,7 +118,7 @@ class _SensorChooseRoomEquipmentPageState
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: AlertDialog(
-            title: Text(
+            title: const Text(
               'Renseignez un équipement personnalisée',
               style: TextStyle(
                 fontSize: AppTheme.bodyText1Size,
@@ -135,14 +134,14 @@ class _SensorChooseRoomEquipmentPageState
               children: [
                 TextField(
                   controller: _textEditingController,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: AppTheme.subtitle1Size,
                     color: AppTheme.blackColor,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Ex: Arroseur automatique',
                     suffixIcon: IconButton(
-                      padding: EdgeInsets.fromLTRB(
+                      padding: const EdgeInsets.fromLTRB(
                           15, 15, 0, 0), // Réduction du padding du bouton croix
                       onPressed: () {
                         setState(() {
@@ -152,18 +151,18 @@ class _SensorChooseRoomEquipmentPageState
                       icon: Container(
                         width: 16.0,
                         height: 16.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppTheme.grayColor,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.clear,
                           size: 10.0,
                           color: AppTheme.whiteColor,
                         ),
                       ),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppTheme.darkPrimaryColor,
                       ),
@@ -186,7 +185,7 @@ class _SensorChooseRoomEquipmentPageState
                       _addNewSensorAlertDialog(searchQuery);
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 35),
+                      minimumSize: const Size(double.infinity, 35),
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       backgroundColor: AppTheme.darkPrimaryColor,
@@ -195,16 +194,16 @@ class _SensorChooseRoomEquipmentPageState
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Sélectionner'),
+                    child: const Text('Sélectionner'),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],

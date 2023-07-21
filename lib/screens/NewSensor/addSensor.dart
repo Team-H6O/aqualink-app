@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 import 'package:aqualink/screens/NewSensor/searchingSensor.dart';
@@ -22,7 +21,7 @@ class _AddSensorPageState extends State<AddSensorPage> {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: AlertDialog(
-            title: Text(
+            title: const Text(
               'Utiliser un numéro de série',
               style: TextStyle(
                 fontSize: AppTheme.bodyText1Size,
@@ -36,20 +35,20 @@ class _AddSensorPageState extends State<AddSensorPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   'Trouvez le capteur à l’aide de son numéro de série à 6 caractères.',
                   style: TextStyle(fontSize: AppTheme.captionSize),
                 ),
                 TextField(
                   controller: _textEditingController,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: AppTheme.subtitle1Size,
                     color: AppTheme.blackColor,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Numéro de série',
                     suffixIcon: IconButton(
-                      padding: EdgeInsets.fromLTRB(
+                      padding: const EdgeInsets.fromLTRB(
                           15, 15, 0, 0), // Réduction du padding du bouton croix
                       onPressed: () {
                         setState(() {
@@ -59,18 +58,18 @@ class _AddSensorPageState extends State<AddSensorPage> {
                       icon: Container(
                         width: 16.0,
                         height: 16.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppTheme.grayColor,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.clear,
                           size: 10.0,
                           color: AppTheme.whiteColor,
                         ),
                       ),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: AppTheme.darkPrimaryColor,
                       ),
@@ -98,7 +97,7 @@ class _AddSensorPageState extends State<AddSensorPage> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 35),
+                      minimumSize: const Size(double.infinity, 35),
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       backgroundColor: AppTheme.darkPrimaryColor,
@@ -107,7 +106,7 @@ class _AddSensorPageState extends State<AddSensorPage> {
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 2,
-                      side: BorderSide(color: Color(0x00FFFFFF)),
+                      side: const BorderSide(color: Color(0x00FFFFFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -116,7 +115,7 @@ class _AddSensorPageState extends State<AddSensorPage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 13,
               ),
               Align(
@@ -131,7 +130,7 @@ class _AddSensorPageState extends State<AddSensorPage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],
@@ -146,19 +145,19 @@ class _AddSensorPageState extends State<AddSensorPage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: ''),
+        appBar: const ReturnAppBar(title: ''),
         body: SingleChildScrollView(
           padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(height: 80),
+              const SizedBox(height: 80),
               Stack(
                 children: [
                   Container(
                     width: 200,
                     height: 200,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppTheme.nearWhiteColor,
                       boxShadow: [
                         BoxShadow(
@@ -184,33 +183,32 @@ class _AddSensorPageState extends State<AddSensorPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
-              Text(
+              const Text(
                 'Ajouter un capteur',
                 style: TextStyle(
                     fontSize: AppTheme.headline4Size,
                     fontWeight: FontWeight.w800),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 'Assurez-vous que le capteur que vous souhaitez ajouter est bien connecté à l’alimentation.',
                 style: TextStyle(
                   fontSize: AppTheme.bodyText2Size,
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               ElevatedButton(
                 onPressed: _showAlertDialog,
-                child: Text('Rechercher avec un numéro de série'),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 45),
+                  minimumSize: const Size(double.infinity, 45),
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   backgroundColor: AppTheme.whiteColor,
@@ -220,13 +218,14 @@ class _AddSensorPageState extends State<AddSensorPage> {
                   ),
                   foregroundColor: AppTheme.darkPrimaryColor,
                   elevation: 2,
-                  side: BorderSide(color: Color(0x00FFFFFF)),
+                  side: const BorderSide(color: Color(0x00FFFFFF)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
+                child: const Text('Rechercher avec un numéro de série'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
@@ -237,7 +236,6 @@ class _AddSensorPageState extends State<AddSensorPage> {
                         builder: (context) => const SearchingSensorPage()),
                   );
                 },
-                child: Text('Rechercher'),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 45),
                   padding: EdgeInsets.zero,
@@ -248,11 +246,12 @@ class _AddSensorPageState extends State<AddSensorPage> {
                     fontWeight: FontWeight.w600,
                   ),
                   elevation: 2,
-                  side: BorderSide(color: Color(0x00FFFFFF)),
+                  side: const BorderSide(color: Color(0x00FFFFFF)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
+                child: const Text('Rechercher'),
               ),
             ],
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
 
@@ -32,7 +31,7 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                       16.0), // this is the border radius of the picker
                 ),
               ),
-              colorScheme: ColorScheme.light(
+              colorScheme: const ColorScheme.light(
                 primary: AppTheme.darkPrimaryColor, // header background color
                 onPrimary: AppTheme.whiteColor, // header text color
                 onSurface: AppTheme.darkPrimaryColor, // body text color
@@ -77,7 +76,7 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                       16.0), // this is the border radius of the picker
                 ),
               ),
-              colorScheme: ColorScheme.light(
+              colorScheme: const ColorScheme.light(
                 primary: AppTheme.darkPrimaryColor, // header background color
                 onPrimary: AppTheme.whiteColor, // header text color
                 onSurface: AppTheme.darkPrimaryColor, // body text color
@@ -110,11 +109,11 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: ReturnAppBar(title: 'Planifier une absence'),
+        appBar: const ReturnAppBar(title: 'Planifier une absence'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
               child: Container(
@@ -143,7 +142,7 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.4,
                               decoration: BoxDecoration(),
-                              child: Padding(
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -176,7 +175,7 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                                         alignment: Alignment.centerRight,
                                         child: Text(
                                           '${_startDate!.day}/${_startDate!.month}/${_startDate!.year}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: AppTheme.headline6Size,
                                             fontWeight: FontWeight.w400,
                                             color: AppTheme.darkPrimaryColor,
@@ -199,7 +198,7 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                           ],
                         ),
                       ),
-                      Divider(),
+                      const Divider(),
                       Container(
                         width: double.infinity,
                         height: 22,
@@ -214,8 +213,8 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                           children: [
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.4,
-                              decoration: BoxDecoration(),
-                              child: Padding(
+                              decoration: const BoxDecoration(),
+                              child: const Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child: Row(
@@ -248,7 +247,7 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                                         alignment: Alignment.centerRight,
                                         child: Text(
                                           '${_endDate!.day}/${_endDate!.month}/${_endDate!.year}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: AppTheme.headline6Size,
                                             fontWeight: FontWeight.w400,
                                             color: AppTheme.darkPrimaryColor,
@@ -276,18 +275,17 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Confirmer'),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 45),
+                  minimumSize: const Size(double.infinity, 45),
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   backgroundColor: AppTheme.darkPrimaryColor,
@@ -296,11 +294,12 @@ class _PlanLeavePageState extends State<PlanLeavePage> {
                     fontWeight: FontWeight.w600,
                   ),
                   elevation: 2,
-                  side: BorderSide(color: Color(0x00FFFFFF)),
+                  side: const BorderSide(color: Color(0x00FFFFFF)),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
+                child: const Text('Confirmer'),
               ),
             ),
           ],
