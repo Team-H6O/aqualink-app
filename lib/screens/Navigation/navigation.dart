@@ -1,3 +1,4 @@
+import 'package:aqualink/screens/Statistics/Statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/Home/home.dart';
@@ -15,6 +16,7 @@ class _NavigationState extends State<Navigation> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(title: "Accueil"),
+    const StatisticsPage(title: "Statistiques"),
     const ArticlesPage()
   ];
 
@@ -42,10 +44,10 @@ class _NavigationState extends State<Navigation> {
           icon: Icon(Icons.home),
           label: 'Accueil',
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(Icons.equalizer),
-        //   label: 'Statistique',
-        // ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.equalizer),
+          label: 'Statistique',
+        ),
         // BottomNavigationBarItem(
         //   icon: Icon(Icons.compare_arrows),
         //   label: 'Comparaison',

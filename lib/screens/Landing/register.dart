@@ -424,7 +424,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     activeColor: AppTheme.darkPrimaryColor,
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   "Accepter nos conditions d'utilisation",
                                   style: TextStyle(
                                     fontSize: AppTheme.bodyText2Size,
@@ -445,9 +445,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                       builder: (context) => const Navigation()),
                                 );
                               },
-                              child: Text("S'inscrire"),
                               style: ElevatedButton.styleFrom(
-                                minimumSize: Size(double.infinity, 45),
+                                minimumSize: const Size(double.infinity, 45),
                                 padding: EdgeInsets.zero,
                                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 backgroundColor: AppTheme.darkPrimaryColor,
@@ -456,11 +455,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                   fontWeight: FontWeight.w600,
                                 ),
                                 elevation: 2,
-                                side: BorderSide(color: Color(0x00FFFFFF)),
+                                side:
+                                    const BorderSide(color: Color(0x00FFFFFF)),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14),
                                 ),
                               ),
+                              child: const Text("S'inscrire"),
                             ),
                           ),
                           Padding(

@@ -334,9 +334,8 @@ class _LoginPageState extends State<LoginPage> {
                                       builder: (context) => const Navigation()),
                                 );
                               },
-                              child: Text("S'inscrire"),
                               style: ElevatedButton.styleFrom(
-                                minimumSize: Size(double.infinity, 45),
+                                minimumSize: const Size(double.infinity, 45),
                                 padding: EdgeInsets.zero,
                                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 backgroundColor: AppTheme.darkPrimaryColor,
@@ -345,11 +344,13 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w600,
                                 ),
                                 elevation: 2,
-                                side: BorderSide(color: Color(0x00FFFFFF)),
+                                side:
+                                    const BorderSide(color: Color(0x00FFFFFF)),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14),
                                 ),
                               ),
+                              child: Text("S'inscrire"),
                             ),
                           ),
                           Padding(
