@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
+import 'package:aqualink/widgets/Statistics/linearGraph.dart';
 
 class StatisticsPage extends StatefulWidget {
   final String title;
@@ -419,9 +420,148 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(58, 110, 209, 206),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: AppTheme.primaryColor,
+                          width: 1,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                        child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.info_outline_rounded,
+                            color: AppTheme.validColor,
+                            size: 22,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: Text("Votre consommation a baissé par rapport à la semaine dernière"),
+                          ),
+                        ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      "Consommation par jour",
+                      style: TextStyle(
+                        fontSize: AppTheme.headline4Size,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ],
                 ),
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Container(
+                padding: EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  color: AppTheme.whiteColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 195, 224, 223)
+                          .withOpacity(0.5), // Couleur de l'ombre
+                      spreadRadius: 2.0, // Rayon de diffusion de l'ombre
+                      blurRadius: 5.0, // Rayon de flou de l'ombre
+                      offset: Offset(0,
+                          3), // Décalage de l'ombre (horizontal, vertical)
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: const LineChartSample2(),
+              ),),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppTheme.whiteColor,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(15, 20, 5, 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  // Premiere row
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/image/room/bathroom.svg',
+                                      ),
+                                      const SizedBox(width: 10,),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text("Lave vaisselle",
+                                          style: TextStyle(
+                                            color: AppTheme.darkPrimaryColor,
+                                            fontSize: AppTheme.headline5Size,
+                                            fontWeight: FontWeight.w800,
+                                          )),
+                                          Row(
+                                            children: [
+                                              Text("100,00 €",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w800,
+                                                fontSize: AppTheme.headline5Size,
+                                              ) ,),
+                                              SizedBox(width: 5,),
+                                              Text("aujourd'hui",
+                                              style: TextStyle(
+                                                color: AppTheme.grayColor,
+                                              ) ,)
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  // Deuxieme row
+                                  Row(
+                                    children: [
+                                      Text("10%",
+                                      style:TextStyle(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: AppTheme.headline3Size,
+                                      ) ,),
+                                      SizedBox(width: 4,),
+                                      Text("de la pièce"),
+                                      Icon(
+                                        Icons.chevron_right,
+                                        color: AppTheme.darkPrimaryColor,
+                                        size: 30,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+                      ),
+                    ),
+                ],
+                ),
+              ),
+              SizedBox(
+                height: 200,
+              ),
             ],
           ),
         ),
