@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:aqualink/widgets/Statistics/linearGraph.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/returnAppbar.dart';
-import 'package:aqualink/widgets/Appbar/simpleAppbar.dart';
-import 'package:aqualink/widgets/Statistics/linearGraph.dart';
-import 'package:aqualink/screens/Statistics/sensorStatistics.dart';
 
-class StatisticsPage extends StatefulWidget {
+class SensorStatistics extends StatefulWidget {
   final String title;
-  const StatisticsPage({Key? key, required this.title}) : super(key: key);
+
+  const SensorStatistics({Key? key, required this.title}) : super(key: key);
 
   @override
-  State<StatisticsPage> createState() => _StatisticsPageState();
+  State<SensorStatistics> createState() => _SensorStatisticsState();
 }
 
-class _StatisticsPageState extends State<StatisticsPage> {
+class _SensorStatisticsState extends State<SensorStatistics> {
   List<String> filterItems = [
     'Euros',
     'Litres',
@@ -25,60 +23,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
   int touchedIndex = -1;
   int selectedButtonIndex = 0;
 
-  List<PieChartSectionData> showingSections(List<Map<String, dynamic>> data) {
-    return List.generate(data.length, (i) {
-      final datum = data[i];
-      final isSelected = i == touchedIndex;
-      final isTouched =
-          isSelected || (i == 0); // Highlight the first element by default
-      final fontSize = isTouched ? 20.0 : 16.0;
-      final radius = isTouched ? 80.0 : 70.0;
-      final widgetSize = isTouched ? 55.0 : 50.0;
-      const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
-
-      return PieChartSectionData(
-        color: isSelected ? AppTheme.darkPrimaryColor : AppTheme.primaryColor,
-        value: datum['value'].toDouble(),
-        title: isSelected
-            ? '${datum['value']}%'
-            : '', // Show percentage for selected element
-        radius: radius,
-        titleStyle: TextStyle(
-          fontSize: 0,
-          color: AppTheme.darkPrimaryColor,
-        ),
-        badgeWidget: _Badge(
-          datum['iconPath'],
-          size: widgetSize,
-          borderColor: AppTheme.darkPrimaryColor,
-        ),
-        badgePositionPercentageOffset: .98,
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // Sample data for demonstration (replace this with your data)
-    List<Map<String, dynamic>> pieChartData = [
-      {
-        'value': 40,
-        'iconPath': 'assets/image/room/bathroom.svg',
-      },
-      {
-        'value': 30,
-        'iconPath': 'assets/image/room/toilet.svg',
-      },
-      {
-        'value': 16,
-        'iconPath': 'assets/image/room/kitchen.svg',
-      },
-      {
-        'value': 15,
-        'iconPath': 'assets/image/room/garden.svg',
-      },
-    ];
-
     List<Map<String, dynamic>> sensorData = [
       {
         'title': 'Lavabo',
@@ -129,26 +75,10 @@ class _StatisticsPageState extends State<StatisticsPage> {
       },
     ];
 
-    void printValues(int index) {
-      for (var data in pieChartData) {
-        int value = data['value'];
-        print('Value: $value');
-      }
-    }
-
-    void onPieChartItemSelected(int index) {
-      print("Item $index selected!");
-      setState(() {
-        touchedIndex = index;
-        printValues(
-            touchedIndex); // Call the function to print the values when an item is selected
-      });
-    }
-
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
-        appBar: SimpleAppBar(title: "Ma consommation"),
+        appBar: ReturnAppBar(title: widget.title),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -442,81 +372,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         )
                       ],
                     ),
-                    Center(
-                      child: AspectRatio(
-                        aspectRatio: 1.2,
-                        child: PieChart(
-                          PieChartData(
-                            pieTouchData: PieTouchData(touchCallback:
-                                (FlTouchEvent event,
-                                    PieTouchResponse? pieTouchResponse) {
-                              if (!event.isInterestedForInteractions ||
-                                  pieTouchResponse == null ||
-                                  pieTouchResponse.touchedSection == null) {
-                                setState(() {
-                                  touchedIndex = -1;
-                                });
-                              } else {
-                                int index = pieTouchResponse
-                                    .touchedSection!.touchedSectionIndex;
-                                onPieChartItemSelected(index);
-                              }
-                            }),
-                            borderData: FlBorderData(
-                              show: false,
-                            ),
-                            sectionsSpace: 4,
-                            centerSpaceRadius: 40,
-                            sections: showingSections(pieChartData),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(58, 110, 209, 206),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: AppTheme.primaryColor,
-                          width: 1,
-                        ),
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(
-                              Icons.info_outline_rounded,
-                              color: AppTheme.validColor,
-                              size: 22,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Text(
-                                  "Votre consommation a baissé par rapport à la semaine dernière"),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Consommation par jour",
-                      style: TextStyle(
-                        fontSize: AppTheme.headline4Size,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -539,127 +394,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: const LineChartSample2(),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Column(
-                  children: sensorData.map((data) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
-                      child: GestureDetector(
-                        onTap: () {
-                          print(data['title']);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  SensorStatistics(title: data['title']),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 195, 224, 223)
-                                    .withOpacity(0.5),
-                                spreadRadius: 2.0,
-                                blurRadius: 5.0,
-                                offset: Offset(0, 3),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(15, 15, 5, 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // Premiere row
-                                Row(
-                                  children: [
-                                    SvgPicture.asset(
-                                      data['iconPath'],
-                                      width: 30,
-                                    ),
-                                    const SizedBox(
-                                      width: 13,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          data['title'],
-                                          style: TextStyle(
-                                            color: AppTheme.darkPrimaryColor,
-                                            fontSize: AppTheme.headline6Size,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              '${data['weekValue']} € /',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w800,
-                                                fontSize:
-                                                    AppTheme.headline6Size,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 3,
-                                            ),
-                                            Text(
-                                              "cette semaine",
-                                              style: TextStyle(
-                                                color: AppTheme.grayColor,
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                // Deuxieme row
-                                Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "10%",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w800,
-                                            fontSize: AppTheme.headline3Size,
-                                          ),
-                                        ),
-                                        Text("de la pièce"),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Icon(
-                                      Icons.chevron_right,
-                                      color: AppTheme.darkPrimaryColor,
-                                      size: 30,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
                 ),
               ),
               SizedBox(
@@ -728,47 +462,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _Badge extends StatelessWidget {
-  const _Badge(
-    this.svgAsset, {
-    required this.size,
-    required this.borderColor,
-  });
-  final String svgAsset;
-  final double size;
-  final Color borderColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: PieChart.defaultDuration,
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: borderColor,
-          width: 2,
-        ),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black.withOpacity(.5),
-            offset: const Offset(3, 3),
-            blurRadius: 3,
-          ),
-        ],
-      ),
-      padding: EdgeInsets.all(size * .20),
-      child: Center(
-        child: SvgPicture.asset(
-          svgAsset,
         ),
       ),
     );

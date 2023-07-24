@@ -187,17 +187,17 @@ class _LineChartSample2State extends State<LineChartSample2> {
           gradient: LinearGradient(
             colors: gradientColors,
           ),
-          barWidth: 5,
+          barWidth: 2,
           isStrokeCapRound: true,
           dotData: FlDotData(
             show: true,
             getDotPainter: (spot, percent, barData, index) =>
-              FlDotCirclePainter(
-            radius: 3,
-            color: AppTheme.primaryColor,
-            strokeWidth: 2,
-            strokeColor: AppTheme.darkPrimaryColor,
-          ),
+                FlDotCirclePainter(
+              radius: 3,
+              color: AppTheme.whiteColor,
+              strokeWidth: 2,
+              strokeColor: AppTheme.darkPrimaryColor,
+            ),
           ),
           belowBarData: BarAreaData(
             show: true,
