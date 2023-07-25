@@ -2,6 +2,15 @@ import 'package:aqualink/utils/theme.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalFilter extends StatefulWidget {
+  final Function(String) onCategorySelected;
+  final String selectedCategory;
+
+  const HorizontalFilter({
+    super.key,
+    required this.onCategorySelected,
+    required this.selectedCategory,
+  });
+
   @override
   _HorizontalFilterState createState() => _HorizontalFilterState();
 }
@@ -34,13 +43,14 @@ class _HorizontalFilterState extends State<HorizontalFilter> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: GestureDetector(
                 onTap: () {
+                  widget.onCategorySelected('Tous');
                   setState(() {
                     selectedFilterIndex = 0;
                   });
                 },
                 child: FixedFilterItem(
                   text: filterItems[0],
-                  isSelected: selectedFilterIndex == 0,
+                  isSelected: widget.selectedCategory == 'Tous',
                 ),
               ),
             ),
@@ -58,13 +68,16 @@ class _HorizontalFilterState extends State<HorizontalFilter> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: GestureDetector(
                     onTap: () {
+                      widget.onCategorySelected(filterItems[filterIndex]);
                       setState(() {
                         selectedFilterIndex = filterIndex;
+                        print(selectedFilterIndex);
                       });
                     },
                     child: FilterItem(
                       text: filterItems[filterIndex],
-                      isSelected: selectedFilterIndex == filterIndex,
+                      isSelected:
+                          widget.selectedCategory == filterItems[filterIndex],
                     ),
                   ),
                 );

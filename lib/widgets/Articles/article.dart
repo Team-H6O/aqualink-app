@@ -5,6 +5,7 @@ class Article extends StatelessWidget {
   // Propriétés du widget
   final String title;
   final String description;
+  final String categorie;
   final String path;
 
   // Constructeur
@@ -12,6 +13,7 @@ class Article extends StatelessWidget {
       {Key? key,
       required this.title,
       required this.description,
+      required this.categorie,
       required this.path})
       : super(key: key);
 
