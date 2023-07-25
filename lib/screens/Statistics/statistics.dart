@@ -129,20 +129,24 @@ class _StatisticsPageState extends State<StatisticsPage> {
       },
     ];
 
-    void printValues(int index) {
-      for (var data in pieChartData) {
-        int value = data['value'];
-        print('Value: $value');
+    // Fonction pour obtenir la valeur (value) sélectionnée du tableau pieChartData
+    int? getValueAtIndex(int index) {
+      if (index >= 0 && index < pieChartData.length) {
+        return pieChartData[index]['value'];
+      } else {
+        return null;
       }
     }
 
+    // Utilisation de la fonction dans onPieChartItemSelected
     void onPieChartItemSelected(int index) {
       print("Item $index selected!");
-      setState(() {
-        touchedIndex = index;
-        printValues(
-            touchedIndex); // Call the function to print the values when an item is selected
-      });
+      int? selectedValue = getValueAtIndex(index);
+      if (selectedValue != null) {
+        print('Selected Value: $selectedValue');
+      } else {
+        print('Invalid index or value not found.');
+      }
     }
 
     return GestureDetector(
