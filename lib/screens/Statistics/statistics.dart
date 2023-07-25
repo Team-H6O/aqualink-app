@@ -24,6 +24,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
   int selectedIndex = 0;
   int touchedIndex = -1;
   int selectedButtonIndex = 0;
+  double testValue = 0;
 
   List<PieChartSectionData> showingSections(List<Map<String, dynamic>> data) {
     return List.generate(data.length, (i) {
@@ -62,19 +63,19 @@ class _StatisticsPageState extends State<StatisticsPage> {
     // Sample data for demonstration (replace this with your data)
     List<Map<String, dynamic>> pieChartData = [
       {
-        'value': 40,
+        'value': 40.0,
         'iconPath': 'assets/image/room/bathroom.svg',
       },
       {
-        'value': 30,
+        'value': 30.0,
         'iconPath': 'assets/image/room/toilet.svg',
       },
       {
-        'value': 16,
+        'value': 16.0,
         'iconPath': 'assets/image/room/kitchen.svg',
       },
       {
-        'value': 15,
+        'value': 15.0,
         'iconPath': 'assets/image/room/garden.svg',
       },
     ];
@@ -130,18 +131,19 @@ class _StatisticsPageState extends State<StatisticsPage> {
     ];
 
     // Fonction pour obtenir la valeur (value) sélectionnée du tableau pieChartData
-    int? getValueAtIndex(int index) {
+    double getValueAtIndex(int index) {
       if (index >= 0 && index < pieChartData.length) {
         return pieChartData[index]['value'];
       } else {
-        return null;
+        return 0.0;
       }
     }
 
     // Utilisation de la fonction dans onPieChartItemSelected
     void onPieChartItemSelected(int index) {
       print("Item $index selected!");
-      int? selectedValue = getValueAtIndex(index);
+      double selectedValue = getValueAtIndex(index);
+      testValue = selectedValue;
       if (selectedValue != null) {
         print('Selected Value: $selectedValue');
       } else {
@@ -446,35 +448,49 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         )
                       ],
                     ),
-                    Center(
-                      child: AspectRatio(
-                        aspectRatio: 1.2,
-                        child: PieChart(
-                          PieChartData(
-                            pieTouchData: PieTouchData(touchCallback:
-                                (FlTouchEvent event,
-                                    PieTouchResponse? pieTouchResponse) {
-                              if (!event.isInterestedForInteractions ||
-                                  pieTouchResponse == null ||
-                                  pieTouchResponse.touchedSection == null) {
-                                setState(() {
-                                  touchedIndex = -1;
-                                });
-                              } else {
-                                int index = pieTouchResponse
-                                    .touchedSection!.touchedSectionIndex;
-                                onPieChartItemSelected(index);
-                              }
-                            }),
-                            borderData: FlBorderData(
-                              show: false,
+                    Stack(
+                      children: [
+                        Center(
+                          child: AspectRatio(
+                            aspectRatio: 1.2,
+                            child: PieChart(
+                              PieChartData(
+                                pieTouchData: PieTouchData(touchCallback:
+                                    (FlTouchEvent event,
+                                        PieTouchResponse? pieTouchResponse) {
+                                  if (!event.isInterestedForInteractions ||
+                                      pieTouchResponse == null ||
+                                      pieTouchResponse.touchedSection == null) {
+                                    setState(() {
+                                      touchedIndex = -1;
+                                    });
+                                  } else {
+                                    int index = pieTouchResponse
+                                        .touchedSection!.touchedSectionIndex;
+                                    onPieChartItemSelected(index);
+                                  }
+                                }),
+                                borderData: FlBorderData(
+                                  show: false,
+                                ),
+                                sectionsSpace: 4,
+                                centerSpaceRadius: 40,
+                                sections: showingSections(pieChartData),
+                              ),
                             ),
-                            sectionsSpace: 4,
-                            centerSpaceRadius: 40,
-                            sections: showingSections(pieChartData),
                           ),
                         ),
-                      ),
+                        Center(
+                            child: Padding(
+                          padding: EdgeInsets.only(top: 135.0),
+                          child: Text('$testValue L',
+                              style: TextStyle(
+                                color: AppTheme.blackColor,
+                                fontSize: AppTheme.headline4Size,
+                                fontWeight: FontWeight.w800,
+                              )),
+                        )),
+                      ],
                     ),
                     SizedBox(
                       height: 20,
