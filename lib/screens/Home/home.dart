@@ -1,3 +1,5 @@
+import 'package:aqualink/screens/Statistics/sensorStatistics.dart';
+import 'package:aqualink/screens/Statistics/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/widgets/Appbar/customAppbar.dart';
@@ -30,6 +32,25 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+class Equipment {
+  final String name;
+  final double value;
+  final int alert;
+  final String asset;
+
+  Equipment({required this.name, required this.value, required this.alert, required this.asset});
+}
+
+// Modèle d'objet pour les pièces
+class Room {
+  final String name;
+  final double lastValue;
+  final List<Equipment> equipments;
+  final String asset;
+
+  Room({required this.name, required this.lastValue, required this.equipments, required this.asset});
+}
+
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
@@ -41,6 +62,42 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Equipment> kitchenEquipments = [
+      Equipment(name: 'Lave-vaisselle', value: 4.0, alert: 0, asset: 'assets/image/object/washing.png'),
+      Equipment(name: 'Lavabo', value: 4.0, alert: 0, asset: 'assets/image/object/sink.png'),
+    ];
+
+    List<Equipment> bathroomEquipments = [
+      Equipment(name: 'Douche', value: 3.4, alert: 0, asset: 'assets/image/object/shower.png'),
+      Equipment(name: 'Lave-linge', value: 3.4, alert: 0, asset: 'assets/image/object/washing.png'),
+      Equipment(name: 'Lavabo', value: 3.4, alert: 1, asset: 'assets/image/object/sink.png'),
+      Equipment(name: 'Toilette', value: 3.4, alert: 1, asset: 'assets/image/object/toilet.png'),
+    ];
+
+    List<Room> roomList = [
+      Room(name: 'Cuisine', lastValue: 3.0, equipments: kitchenEquipments, asset: 'assets/image/room/kitchen.png'),
+      Room(name: 'Salle de bain', lastValue: 13.7, equipments: bathroomEquipments, asset: 'assets/image/room/bathroom.png'),
+    ];
+
+    double calculateTotalValue(List<Equipment> equipments) {
+      double totalValue = 0.0;
+      for (var equipment in equipments) {
+        totalValue += equipment.value;
+      }
+      return totalValue;
+    }
+
+    bool isTotalValueGreaterThanInitial(double totalValue, double initialValue) {
+      return totalValue > initialValue;
+    }
+
+    String getSign(double totalValue, double initialValue) {
+      return isTotalValueGreaterThanInitial(totalValue, initialValue) ? "+" : "-";
+    }
+
+    double totalValue = calculateTotalValue(roomList[_selectedIndex].equipments);
+
     return GestureDetector(
       child: Scaffold(
         backgroundColor: AppTheme.nearWhiteColor,
@@ -283,9 +340,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                child: Container(
+              Container(
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(
@@ -358,399 +413,155 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-              ),
-
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
-                child: Text(
+                SizedBox(height: 40),
+                Text(
                   'Par pièces',
                   style: TextStyle(
                     fontSize: AppTheme.headline4Size,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                child: Container(
-                  width: double.infinity,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: AppTheme.whiteColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(12, 10, 5, 10),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 50,
-                          height: 50,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.asset(
-                            'assets/image/room/bathroom.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(13, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Salle de bain',
-                                      style: TextStyle(
-                                        fontSize: AppTheme.headline4Size,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Text(
-                                      '4 appareils',
-                                      style: TextStyle(
-                                        fontSize: AppTheme.headline6Size,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppTheme.grayColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 5, 0),
-                                          child: Text(
-                                            '7.1',
-                                            style: TextStyle(
-                                              fontSize: AppTheme.headline4Size,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppTheme.darkPrimaryColor,
-                                            ),
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.trending_down,
-                                          color: AppTheme.darkPrimaryColor,
-                                          size: 22,
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      'litres/jours',
-                                      style: TextStyle(
-                                        fontSize: AppTheme.headline6Size,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.chevron_right,
-                          color: AppTheme.darkPrimaryColor,
-                          size: 28,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 165,
-                decoration: BoxDecoration(),
-                child: GridView(
-                  padding: EdgeInsets.zero,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    childAspectRatio: 2.5,
-                  ),
-                  scrollDirection: Axis.vertical,
+              // Afficher les blocs d'équipements par pièce
+              for (var room in roomList)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 70,
-                      decoration: BoxDecoration(
-                        color: AppTheme.whiteColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    GestureDetector(onTap: () {
+                      Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  StatisticsPage(title: "Ma consommation"),
+                            ),
+                          );
+                    },child:                    Container(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 5),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 10, 5, 10),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.asset(
-                                  'assets/image/object/shower.png',
-                                  width: 28,
-                                  fit: BoxFit.cover,
+                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color: AppTheme.whiteColor,
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.whiteColor,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Douche',
-                                          style: TextStyle(
-                                            fontSize: AppTheme.headline6Size,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(12, 10, 5, 10),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width: 50,
+                                        height: 50,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.chevron_right,
-                              color: AppTheme.darkPrimaryColor,
-                              size: 20,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 70,
-                      decoration: BoxDecoration(
-                        color: AppTheme.whiteColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 10, 5, 10),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.asset(
-                                  'assets/image/object/washing.png',
-                                  width: 28,
-                                  fit: BoxFit.cover,
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.whiteColor,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Lave-linge',
-                                          style: TextStyle(
-                                            fontSize: AppTheme.headline6Size,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                        child: Image.asset(
+                                          room.asset,
+                                          fit: BoxFit.cover,
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.chevron_right,
-                              color: AppTheme.darkPrimaryColor,
-                              size: 20,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 70,
-                      decoration: BoxDecoration(
-                        color: AppTheme.whiteColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 2, 3, 4),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.asset(
-                                  'assets/image/object/sink.png',
-                                  width: 28,
-                                  fit: BoxFit.cover,
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.whiteColor,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Lavabo',
-                                          style: TextStyle(
-                                            fontSize: AppTheme.headline6Size,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                      ),
+                                      Expanded(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  EdgeInsetsDirectional.fromSTEB(13, 0, 0, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    room.name,
+                                                    style: TextStyle(
+                                                      fontSize: AppTheme.headline4Size,
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 2,),
+                                                  Text(
+                                                    '${room.equipments.length} appareils',
+                                                    style: TextStyle(
+                                                      fontSize: AppTheme.headline6Size,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: AppTheme.grayColor,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional.fromSTEB(
+                                                                0, 0, 5, 0),
+                                                        child: Text(
+                                                          '${getSign(calculateTotalValue(room.equipments), room.lastValue)} ${calculateTotalValue(room.equipments).toStringAsFixed(1)}',
+                                                          style: TextStyle(
+                                                            fontSize: AppTheme.headline4Size,
+                                                            fontWeight: FontWeight.w600,
+                                                            color: isTotalValueGreaterThanInitial(calculateTotalValue(room.equipments), room.lastValue) ? AppTheme.errorColor : AppTheme.validColor,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Icon(
+                                                        isTotalValueGreaterThanInitial(calculateTotalValue(room.equipments), room.lastValue) ? Icons.trending_up : Icons.trending_down,
+                                                        color: isTotalValueGreaterThanInitial(calculateTotalValue(room.equipments), room.lastValue) ? AppTheme.errorColor : AppTheme.validColor,
+                                                        size: 22,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Text(
+                                                    'litres/jours',
+                                                    style: TextStyle(
+                                                      fontSize: AppTheme.headline6Size,
+                                                      fontWeight: FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Icon(
+                                        Icons.chevron_right,
+                                        color: AppTheme.darkPrimaryColor,
+                                        size: 28,
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.error_outline,
-                                  color: AppTheme.secondaryColor,
-                                  size: 18,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 3, 2, 0),
-                                  child: Icon(
-                                    Icons.chevron_right,
-                                    color: AppTheme.darkPrimaryColor,
-                                    size: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                    ),),
+                    Column(
+                        children: _buildEquipmentRows(room.equipments),
                     ),
-                    Container(
-                      height: 70,
-                      decoration: BoxDecoration(
-                        color: AppTheme.whiteColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 2, 3, 4),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.asset(
-                                  'assets/image/object/toilet.png',
-                                  width: 28,
-                                  fit: BoxFit.cover,
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.whiteColor,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Toilette',
-                                          style: TextStyle(
-                                            fontSize: AppTheme.headline6Size,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.error_outline,
-                                  color: AppTheme.errorColor,
-                                  size: 18,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 3, 2, 0),
-                                  child: Icon(
-                                    Icons.chevron_right,
-                                    color: AppTheme.darkPrimaryColor,
-                                    size: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    SizedBox(height: 20,),
                   ],
                 ),
+
+              const SizedBox(
+                height: 20,
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
@@ -901,4 +712,134 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+// Méthode pour générer les lignes de blocs d'équipements
+  List<Widget> _buildEquipmentRows(List<Equipment> equipments) {
+    
+    List<Widget> equipmentRows = [];
+    for (int i = 0; i < equipments.length; i += 2) {
+      var equipment1 = equipments[i];
+      var equipment2 = i + 1 < equipments.length ? equipments[i + 1] : null;
+
+      equipmentRows.add(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildEquipmentBlock(equipment1),
+            if (equipment2 != null) _buildEquipmentBlock(equipment2),
+          ],
+        ),
+      );
+
+      // Ajouter un SizedBox entre les lignes si nécessaire (sauf pour la dernière ligne)
+      if (i + 2 < equipments.length) {
+        equipmentRows.add(SizedBox(height: 16)); // Vous pouvez ajuster la hauteur selon vos besoins
+      }
+    }
+
+    return equipmentRows;
+  }
+
+  // Méthode pour générer un bloc d'équipement
+  Widget _buildEquipmentBlock(Equipment equipment) {
+
+    Color buttonColor = AppTheme.secondaryColor;
+
+    if (equipment.alert == 1) {
+        buttonColor = AppTheme.secondaryColor;
+      } else if (equipment.alert == 2) {
+        buttonColor = AppTheme.errorColor;
+    }
+
+    return
+    GestureDetector(onTap: () {
+      Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SensorStatistics(title: equipment.name),
+                            ),
+                          );
+    },child: Container(
+      height: 70,
+      decoration: BoxDecoration(
+        color: AppTheme.whiteColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(12, 5, 5, 5),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Image.asset(
+                  equipment.asset,
+                  width: 28,
+                  fit: BoxFit.cover,
+                ),
+                Container(
+                  width: 104,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: AppTheme.whiteColor,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(
+                        5, 0, 0, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment:
+                          MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          equipment.name,
+                          style: TextStyle(
+                            fontSize: AppTheme.bodyText1Size,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            if(equipment.alert == 0)
+              Icon(
+                Icons.chevron_right,
+                color: AppTheme.darkPrimaryColor,
+                size: 20,
+              ),
+            if(equipment.alert == 1 || equipment.alert == 2)
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: buttonColor,
+                  size: 18,
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(
+                      0, 3, 0, 0),
+                  child: Icon(
+                    Icons.chevron_right,
+                    color: AppTheme.darkPrimaryColor,
+                    size: 20,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+    );
+  }
+
 }
