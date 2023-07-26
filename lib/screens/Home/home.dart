@@ -1,7 +1,7 @@
-import 'package:aqualink/screens/Statistics/sensorStatistics.dart';
-import 'package:aqualink/screens/Statistics/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:aqualink/utils/theme.dart';
+import 'package:aqualink/screens/Statistics/sensorStatistics.dart';
+import 'package:aqualink/screens/Statistics/statistics.dart';
 import 'package:aqualink/widgets/Appbar/customAppbar.dart';
 
 void main() {
@@ -73,12 +73,12 @@ class _HomePageState extends State<HomePage> {
     List<Equipment> kitchenEquipments = [
       Equipment(
           name: 'Lave-vaisselle',
-          value: 4.0,
+          value: 7.4,
           alert: 0,
           asset: 'assets/image/object/washing.png'),
       Equipment(
           name: 'Lavabo',
-          value: 4.0,
+          value: 9.3,
           alert: 0,
           asset: 'assets/image/object/sink.png'),
     ];
@@ -86,22 +86,22 @@ class _HomePageState extends State<HomePage> {
     List<Equipment> bathroomEquipments = [
       Equipment(
           name: 'Douche',
-          value: 3.4,
+          value: 15.4,
           alert: 0,
           asset: 'assets/image/object/shower.png'),
       Equipment(
           name: 'Lave-linge',
-          value: 3.4,
+          value: 7.7,
           alert: 0,
           asset: 'assets/image/object/washing.png'),
       Equipment(
           name: 'Lavabo',
-          value: 3.4,
+          value: 5.2,
           alert: 1,
           asset: 'assets/image/object/sink.png'),
       Equipment(
           name: 'Toilette',
-          value: 3.4,
+          value: 6.1,
           alert: 2,
           asset: 'assets/image/object/toilet.png'),
     ];
@@ -109,16 +109,17 @@ class _HomePageState extends State<HomePage> {
     List<Room> roomList = [
       Room(
           name: 'Cuisine',
-          lastValue: 3.0,
+          lastValue: 20.1,
           equipments: kitchenEquipments,
           asset: 'assets/image/room/kitchen.png'),
       Room(
           name: 'Salle de bain',
-          lastValue: 13.7,
+          lastValue: 32.5,
           equipments: bathroomEquipments,
           asset: 'assets/image/room/bathroom.png'),
     ];
 
+    // Fonction pour calculer la consommation par pièce
     double calculateTotalValue(List<Equipment> equipments) {
       double totalValue = 0.0;
       for (var equipment in equipments) {
@@ -127,19 +128,70 @@ class _HomePageState extends State<HomePage> {
       return totalValue;
     }
 
+    // Fonction pour calculer la consommation de l'ensemble des pièces
+    double calculateTotalValueForAllRooms(List<Room> rooms) {
+      double totalValue = 0;
+      for (var room in rooms) {
+        totalValue += calculateTotalValue(room.equipments);
+      }
+      return totalValue;
+    }
+
+    // Fonction pour vérifier si la consommation d'une pièce est supérieur ou inferieure à la consommation précédente
     bool isTotalValueGreaterThanInitial(
         double totalValue, double initialValue) {
       return totalValue > initialValue;
     }
 
+    // Afficher un signe + ou - en fonction de isTotalValueGreaterThanInitial()
     String getSign(double totalValue, double initialValue) {
       return isTotalValueGreaterThanInitial(totalValue, initialValue)
           ? "+"
           : "-";
     }
 
-    double totalValue =
-        calculateTotalValue(roomList[_selectedIndex].equipments);
+    String differencePercentage(double totalValue, double initialValue) {
+      double differencePercentage = ((totalValue / initialValue) - 1) * 100;
+      if(differencePercentage > 0) {
+        String formattedDifference = '+ ${differencePercentage.toStringAsFixed(1)} %';
+        return formattedDifference;
+      }
+      else {
+        double removeMinus = differencePercentage * (-1);
+        String formattedDifference = '- ${removeMinus.toStringAsFixed(1)} %';
+        return formattedDifference;
+      }
+    }
+
+    double totalValueForAllRooms = calculateTotalValueForAllRooms(roomList);
+    double euroPerLiter = totalValueForAllRooms * 0.004;
+
+    // Liste des mois (FR)
+    List<String> monthsList = [
+      'Janvier',
+      'Février',
+      'Mars',
+      'Avril',
+      'Mai',
+      'Juin',
+      'Juillet',
+      'Août',
+      'Septembre',
+      'Octobre',
+      'Novembre',
+      'Décembre',
+    ];
+
+    // Mois courant
+    int currentMonthInt = new DateTime.now().month;
+    String currentMonth = monthsList[currentMonthInt - 1];
+
+    // Année courante
+    int currentYearInt = new DateTime.now().year;
+    String currentYear = currentYearInt.toString();
+
+    // Date Mois/Année String
+    String currentMonthYear = '$currentMonth $currentYear';
 
     return GestureDetector(
       child: Scaffold(
@@ -224,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                         Text(
-                                          'Mars 2023',
+                                          currentMonthYear,
                                           style: TextStyle(
                                             fontSize: AppTheme.subtitle1Size,
                                             fontWeight: FontWeight.w400,
@@ -248,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        '350.6',
+                                        totalValueForAllRooms.toStringAsFixed(1),
                                         style: TextStyle(
                                           fontSize: AppTheme.headline3Size,
                                           fontWeight: FontWeight.w900,
@@ -323,7 +375,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                         Text(
-                                          'Mars 2023',
+                                          currentMonthYear,
                                           style: TextStyle(
                                             fontSize: AppTheme.subtitle1Size,
                                             fontWeight: FontWeight.w400,
@@ -347,7 +399,7 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        '30.7',
+                                        euroPerLiter.toStringAsFixed(3),
                                         style: TextStyle(
                                           fontSize: AppTheme.headline3Size,
                                           fontWeight: FontWeight.w900,
@@ -358,7 +410,7 @@ class _HomePageState extends State<HomePage> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5, 0, 0, 0),
                                         child: Text(
-                                          'euros',
+                                          '€',
                                           style: TextStyle(
                                             fontSize: AppTheme.headline4Size,
                                             fontWeight: FontWeight.w500,
@@ -480,20 +532,63 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                       child: Container(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 5),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 15),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 100,
+                            height: 120,
                             decoration: BoxDecoration(
                               color: AppTheme.whiteColor,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 10, 5, 10),
-                              child: Row(
+                                  EdgeInsetsDirectional.fromSTEB(12, 8, 6, 8),
+                              child: Column(
+                                children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                     Container(
+                                        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 6),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: isTotalValueGreaterThanInitial(
+                                                              calculateTotalValue(room
+                                                                  .equipments),
+                                                              room.lastValue)
+                                                          ? AppTheme
+                                                              .errorColor
+                                                          : AppTheme
+                                                              .validColor,
+                                            width: 2,
+                                          ),
+                                          borderRadius: BorderRadius.circular(50), // Pour rendre le container arrondi
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              differencePercentage(calculateTotalValue(room.equipments), room.lastValue), 
+                                              style: TextStyle(
+                                                color: isTotalValueGreaterThanInitial(
+                                                              calculateTotalValue(room
+                                                                  .equipments),
+                                                              room.lastValue)
+                                                          ? AppTheme
+                                                              .errorColor
+                                                          : AppTheme
+                                                              .validColor,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),  
+                                  ],
+                                ),
+                                SizedBox(height: 5,),
+                                Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -553,7 +648,7 @@ class _HomePageState extends State<HomePage> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  25, 0, 0, 0),
+                                                  25, 0, 25, 0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -568,48 +663,25 @@ class _HomePageState extends State<HomePage> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 0, 5, 0),
-                                                    child: Text(
-                                                      '${getSign(calculateTotalValue(room.equipments), room.lastValue)} ${calculateTotalValue(room.equipments).toStringAsFixed(1)}',
+                                                                5, 0, 0, 0),
+                                                    child: Text(                                                      calculateTotalValue(room.equipments).toStringAsFixed(1),
                                                       style: TextStyle(
                                                         fontSize: AppTheme
-                                                            .headline4Size,
+                                                            .headline3Size,
                                                         fontWeight:
                                                             FontWeight.w600,
-                                                        color: isTotalValueGreaterThanInitial(
-                                                                calculateTotalValue(room
-                                                                    .equipments),
-                                                                room.lastValue)
-                                                            ? AppTheme
-                                                                .errorColor
-                                                            : AppTheme
-                                                                .validColor,
+                                                        color: AppTheme.blackColor,
                                                       ),
                                                     ),
-                                                  ),
-                                                  Icon(
-                                                    isTotalValueGreaterThanInitial(
-                                                            calculateTotalValue(
-                                                                room.equipments),
-                                                            room.lastValue)
-                                                        ? Icons.trending_up
-                                                        : Icons.trending_down,
-                                                    color: isTotalValueGreaterThanInitial(
-                                                            calculateTotalValue(
-                                                                room.equipments),
-                                                            room.lastValue)
-                                                        ? AppTheme.errorColor
-                                                        : AppTheme.validColor,
-                                                    size: 22,
                                                   ),
                                                 ],
                                               ),
                                               Text(
-                                                'litres/jours',
+                                                'litres/jour',
                                                 style: TextStyle(
                                                   fontSize:
                                                       AppTheme.headline6Size,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w400,
                                                 ),
                                               ),
                                             ],
@@ -618,16 +690,18 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
+                                  // SizedBox(
+                                  //   width: 60,
+                                  // ),
                                   Icon(
                                     Icons.chevron_right,
                                     color: AppTheme.darkPrimaryColor,
-                                    size: 28,
+                                    size: 26,
                                   ),
                                 ],
                               ),
+                                ],
+                              )
                             ),
                           ),
                         ),
