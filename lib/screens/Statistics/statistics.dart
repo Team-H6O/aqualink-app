@@ -33,13 +33,13 @@ class _StatisticsPageState extends State<StatisticsPage> {
       final isTouched =
           isSelected || (i == 0); // Highlight the first element by default
       final fontSize = isTouched ? 20.0 : 16.0;
-      final radius = isTouched ? 80.0 : 70.0;
+      final radius = isTouched ? 70.0 : 55.0;
       final widgetSize = isTouched ? 55.0 : 50.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
 
       return PieChartSectionData(
         color: isSelected ? AppTheme.darkPrimaryColor : AppTheme.primaryColor,
-        value: datum['value'].toDouble(),
+        value: datum['weekValue'].toDouble(),
         title: isSelected
             ? '${datum['value']}%'
             : '', // Show percentage for selected element
@@ -63,19 +63,27 @@ class _StatisticsPageState extends State<StatisticsPage> {
     // Sample data for demonstration (replace this with your data)
     List<Map<String, dynamic>> pieChartData = [
       {
-        'value': 40.0,
+        'weekValue': 40.0,
+        'monthValue': 160.0,
+        'yearValue': 1.92,
         'iconPath': 'assets/image/room/bathroom.svg',
       },
       {
-        'value': 30.0,
+        'weekValue': 30.0,
+        'monthValue': 120.0,
+        'yearValue': 1.22,
         'iconPath': 'assets/image/room/toilet.svg',
       },
       {
-        'value': 16.0,
+        'weekValue': 16.0,
+        'monthValue': 80.0,
+        'yearValue': 0.82,
         'iconPath': 'assets/image/room/kitchen.svg',
       },
       {
-        'value': 15.0,
+        'weekValue': 15.0,
+        'monthValue': 75.0,
+        'yearValue': 0.72,
         'iconPath': 'assets/image/room/garden.svg',
       },
     ];
@@ -133,22 +141,34 @@ class _StatisticsPageState extends State<StatisticsPage> {
     // Fonction pour obtenir la valeur (value) sélectionnée du tableau pieChartData
     double getValueAtIndex(int index) {
       if (index >= 0 && index < pieChartData.length) {
-        return pieChartData[index]['value'];
+        if (selectedButtonIndex == 0) {
+          return pieChartData[index]['weekValue'];
+        } else if (selectedButtonIndex == 1) {
+          return pieChartData[index]['monthValue'];
+        } else {
+          return pieChartData[index]['yearValue'];
+        }
       } else {
-        return 0.0;
+        return pieChartData[0]['weekValue'];
       }
+    }
+
+    void onSwitchButtonPressed(int index) {
+      double selectedValue = getValueAtIndex(index);
+      testValue = selectedValue;
+      setState(() {
+        selectedButtonIndex = index;
+      });
     }
 
     // Utilisation de la fonction dans onPieChartItemSelected
     void onPieChartItemSelected(int index) {
-      print("Item $index selected!");
       double selectedValue = getValueAtIndex(index);
       testValue = selectedValue;
-      if (selectedValue != null) {
-        print('Selected Value: $selectedValue');
-      } else {
-        print('Invalid index or value not found.');
-      }
+      setState(() {
+        touchedIndex = index;
+        print(touchedIndex);
+      });
     }
 
     return GestureDetector(
@@ -284,11 +304,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedButtonIndex = 0;
-                                  });
-                                },
+                                onPressed: () => onSwitchButtonPressed(0),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
                                   primary: selectedButtonIndex == 0
@@ -310,11 +326,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                             ),
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedButtonIndex = 1;
-                                  });
-                                },
+                                onPressed: () => onSwitchButtonPressed(1),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
                                   primary: selectedButtonIndex == 1
@@ -334,20 +346,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                 ),
                               ),
                             ),
-                            // VerticalDivider(
-                            //   color: Colors.grey,
-                            //   thickness: 1.0,
-                            //   width: 1.0,
-                            //   indent: 8.0,
-                            //   endIndent: 8.0,
-                            // ),
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedButtonIndex = 2;
-                                  });
-                                },
+                                onPressed: () => onSwitchButtonPressed(2),
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
                                   primary: selectedButtonIndex == 2
@@ -467,14 +468,13 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   } else {
                                     int index = pieTouchResponse
                                         .touchedSection!.touchedSectionIndex;
-                                    onPieChartItemSelected(index);
+                                    onPieChartItemSelected(
+                                        index); // Appel de la fonction onPieChartItemSelected avec l'index de l'élément touché.
                                   }
                                 }),
-                                borderData: FlBorderData(
-                                  show: false,
-                                ),
+                                borderData: FlBorderData(show: false),
                                 sectionsSpace: 4,
-                                centerSpaceRadius: 40,
+                                centerSpaceRadius: 60,
                                 sections: showingSections(pieChartData),
                               ),
                             ),
@@ -483,7 +483,10 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         Center(
                             child: Padding(
                           padding: EdgeInsets.only(top: 135.0),
-                          child: Text('$testValue L',
+                          child: Text(
+                              selectedButtonIndex == 2
+                                  ? '$testValue m³'
+                                  : '$testValue L',
                               style: TextStyle(
                                 color: AppTheme.blackColor,
                                 fontSize: AppTheme.headline4Size,
