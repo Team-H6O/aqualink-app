@@ -410,7 +410,7 @@ class _HomePageState extends State<HomePage> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5, 0, 0, 0),
                                         child: Text(
-                                          '€',
+                                          'euros',
                                           style: TextStyle(
                                             fontSize: AppTheme.headline4Size,
                                             fontWeight: FontWeight.w500,
