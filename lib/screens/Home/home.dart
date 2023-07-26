@@ -278,7 +278,7 @@ class _HomePageState extends State<HomePage> {
                                         Text(
                                           currentMonthYear,
                                           style: TextStyle(
-                                            fontSize: AppTheme.subtitle1Size,
+                                            fontSize: AppTheme.bodyText1Size,
                                             fontWeight: FontWeight.w400,
                                           ),
                                         ),
@@ -377,7 +377,7 @@ class _HomePageState extends State<HomePage> {
                                         Text(
                                           currentMonthYear,
                                           style: TextStyle(
-                                            fontSize: AppTheme.subtitle1Size,
+                                            fontSize: AppTheme.bodyText1Size,
                                             fontWeight: FontWeight.w400,
                                           ),
                                         ),
