@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:aqualink/api_service.dart';
 import 'package:aqualink/utils/theme.dart';
 import 'package:aqualink/screens/Statistics/sensorStatistics.dart';
 import 'package:aqualink/screens/Statistics/statistics.dart';
@@ -216,6 +217,12 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  postData(); // Appeler la fonction pour effectuer l'appel API
+                },
+                child: Text('Fetch Data'),
               ),
               const Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
