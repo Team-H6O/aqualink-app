@@ -158,6 +158,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
       testValue = selectedValue;
       setState(() {
         selectedButtonIndex = index;
+        print(selectedButtonIndex);
       });
     }
 
